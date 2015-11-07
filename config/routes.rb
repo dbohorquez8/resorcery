@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     scope '(/w/:wid)', constraints: { wid: /[^\/]+/} do
       resources :resources, :only => [:create]
       resources :resource_groups, :only => [:create]
+      resources :allocations, :only => [:create]
     end
   end
 
