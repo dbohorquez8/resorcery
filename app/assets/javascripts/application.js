@@ -11,13 +11,18 @@
 // about supported directives.
 //
 //= require jquery
+//= require lodash
 //= require jquery_ujs
 //= require d3
-//= require circle-packing
-//= require_tree .
+//= require workspaces
+//= require parser
+//= require renderer
 
 'use-strict';
 
 Resorcery = {
-  utils: {}
+  utils: {},
+  routes: {
+    workspacePath: '/1/w/:wid'
+  }
 };

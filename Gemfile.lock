@@ -108,6 +108,8 @@ GEM
     listen (3.0.4)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
+    lodash-rails (3.10.1)
+      railties (>= 3.1)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     lumberjack (1.0.9)
@@ -245,6 +247,7 @@ DEPENDENCIES
   hashids (~> 1.0.2)
   jquery-rails
   kaminari (~> 0.16.3)
+  lodash-rails
   pg (= 0.18.3)
   pry
   rails (= 4.2.4)

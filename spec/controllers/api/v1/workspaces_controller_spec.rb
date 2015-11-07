@@ -56,4 +56,24 @@ RSpec.describe Api::V1::WorkspacesController, "Actions", type: :controller, test
     end
   end
 
+  context '#show' do
+    let(:workspace) { FactoryGirl.create(:workspace) }
+
+    describe "endpoint exists" do
+      before do
+        get :show, api_params(wid: workspace.to_param)
+      end
+
+      it { expect be_success }
+      it { expect be_collection_resource }
+    end
+
+    describe "sending params" do
+
+      it "returns a serialized workspace" do
+        get :show, api_params(wid: workspace.to_param)
+        expect(response.body).not_to be_empty
+      end
+    end
+  end
 end

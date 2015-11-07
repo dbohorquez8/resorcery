@@ -1,4 +1,5 @@
 class Api::V1::WorkspacesController < ApiController
+
   version 1
 
   def index
@@ -10,8 +11,17 @@ class Api::V1::WorkspacesController < ApiController
     expose workspace, serializer: WorkspaceSerializer
   end
 
+  def show
+    workspace = current_user.workspaces.from_unique_id(workspace_id).includes(:resources, :resource_groups, :allocations).first!
+    expose workspace, serializer: WorkspaceSerializer
+  end
+
   private
     def workspace_params
       params.require(:workspace).permit(:name, metadata: [:resources_name, :resource_groups_name])
+    end
+
+    def workspace_id
+      params.require(:wid)
     end
 end

@@ -8,13 +8,10 @@
       </span>
       <span class="workspace-orb__label--alt">Close</span>
     </button>
-    
+
     <section class="resources sidebar workspace__sidebar--left js-resources-sidebar">
       <h1 class="resources__title">Resources</h1>
       <ul class="resources__list">
-        <%- 10.times do %>
-          <li>David Bohorquez</li>
-        <%- end %>
       </ul>
     </section>
   </div>
@@ -33,7 +30,14 @@
           <input type="text" class="form-control form-control--clear input--large js-group-input-name" placeholder="Project Name">
           <input type="submit" class="button button--info button--large float--right" value="OK">
         </div>
-      </form>      
+      </form>
     </div>
   </div>
 </div>
+
+<% content_for :javascripts do %>
+  <script type="text/javascript" charset="utf-8">
+    Resorcery.workspace_id = <%= @workspace.unique_id.to_json.html_safe %>;
+  </script>
+<% end %>
+

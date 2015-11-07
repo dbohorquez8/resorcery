@@ -15,6 +15,25 @@ RSpec.describe Api::V1::AllocationsController, "Actions", type: :controller, tes
     sign_in(user)
   end
 
+  context '#index' do
+    describe "endpoint exists" do
+      before do
+        get :index, api_params(wid: workspace.to_param)
+      end
+
+      it { expect be_success }
+      it { expect be_collection_resource }
+    end
+
+    describe "sending params" do
+
+      it "returns a serialized workspace" do
+        get :index, api_params(wid: workspace.to_param)
+        expect(response.body).not_to be_empty
+      end
+    end
+  end
+
   context "#create" do
     describe "endpoint exists" do
       before do
