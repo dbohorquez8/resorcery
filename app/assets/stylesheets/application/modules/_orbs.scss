@@ -1,0 +1,23 @@
+.orb {
+  width: 100px;
+  height: 100px;
+  transition: all 0.2s ease;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.orb--resources {
+  @include button-style($btn-danger-color, $btn-danger-bg, transparent);
+  @include button-size(0, 0, 3em, 1em, 100%);
+}
+
+.orb--groups {
+  @include button-style($btn-info-color, $btn-info-bg, transparent);
+  @include button-size(0, 0, 3em, 1em, 100%);
+}

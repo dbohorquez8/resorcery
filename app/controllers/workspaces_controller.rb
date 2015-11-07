@@ -5,4 +5,8 @@ class WorkspacesController < ApplicationController
       format.html # index.html.erb
     end
   end
+
+  def show
+
+  end
 end

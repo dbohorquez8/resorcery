@@ -12,9 +12,13 @@ $end: right;
 	$end: left;
 }
 
+//App Variables
+$header-height: 60px;
+$sidebar-width: 300px;
+
 
 //Typography
-$font-family-sans-serif:            "Open Sans", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !default;
+$font-family-sans-serif:            "Catamaran", "Open Sans", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !default;
 $font-family-serif:                 Cambria, Times New Roman, Times, serif !default;
 $font-family-base:                  $font-family-sans-serif;
 $font-family-icons:                "icon-family";
@@ -43,7 +47,7 @@ $base-spacing-unit:                 $line-height-computed;
 $half-spacing-unit:                 $line-height-computed / 2;
 
 $headings-font-family:              $font-family-sans-serif;
-$headings-font-weight:              300;
+$headings-font-weight:              400;
 $headings-line-height:              1.1;
 $headings-color:                    inherit;
 

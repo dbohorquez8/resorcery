@@ -8,8 +8,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <div class="main-container">
+    <header class="main-header">
+      <div class="container">
+        <div class="main-logo">
+          <%= link_to "Resorcery", :root %>
+        </div>
+        <nav class="main-nav">
+          
+        </nav>
+      </div>
+    </header>
+    <main class="main-content">
+      <%= yield %>
+    </main>
+  </div>
 </body>
 </html>

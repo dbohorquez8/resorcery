@@ -1,15 +1,7 @@
 .main-logo{
   font-size: 1em;
   & > a{
-    @extend %main-sprite;
-    @extend %image-replace;
-    background-position: -5px -6px;
-    width: 253px;
-    height: 39px;
-    @media #{$medium-max} {
-      height: 28px;
-      width: 181px;
-    }
+
   }
 }
 
