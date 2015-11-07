@@ -37,6 +37,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.3)
+    bazaar (0.0.2)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
@@ -184,6 +185,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bazaar
   factory_girl_rails (~> 4.0)
   guard (= 2.13.0)
   guard-rspec
