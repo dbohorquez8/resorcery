@@ -5,4 +5,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :workspaces, inverse_of: :user
+  after_create :create_workspace
+
+  private
+    def create_workspace
+      workspaces.create
+    end
 end
