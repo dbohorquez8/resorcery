@@ -1,0 +1,5 @@
+<%= form_for @workspace, url: workspaces_path(version: 1), remote: true do |f| %>
+  Name: <%= f.text_field :name %>
+
+  <%= f.submit %>
+<% end %>

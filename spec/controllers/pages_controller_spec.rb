@@ -9,7 +9,7 @@ RSpec.describe PagesController, type: :controller do
       let(:workspace) { user.workspaces.first }
       before { perform }
 
-      it { expect(response).to redirect_to(workspaces_path(wid: workspace.unique_id, name: workspace.name.parameterize)) }
+      it { expect(response).to redirect_to(workspace_path(wid: workspace.unique_id, name: workspace.name.parameterize)) }
     end
 
     context "with many workspaces" do

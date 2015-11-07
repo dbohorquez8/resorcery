@@ -10,8 +10,7 @@ class Workspace < ActiveRecord::Base
   has_many :allocations, inverse_of: :workspace
   belongs_to :user, inverse_of: :workspaces
 
-  before_validation :init_resource_name_and_group_name, on: :create
-  before_validation :init_name_generator, on: :create
+  before_validation :with_defaults, on: :create
 
   scope :from_unique_id, -> (uid) { where(id: $hashids.decode(uid).first) }
 
@@ -20,12 +19,18 @@ class Workspace < ActiveRecord::Base
     $hashids.encode(self.id)
   end
 
+  def with_defaults
+    init_resource_name_and_group_name
+    init_name_generator
+    self
+  end
+
   private
   # this method sets the default resource name and resource group name for a worskpace.
   # remember the user is able to change this later
   def init_resource_name_and_group_name
-    metadata[:resources_name]       = DEFAULT_RESOURCES_NAME
-    metadata[:resource_groups_name] = DEFAULT_RESOURCE_GROUPS_NAME
+    metadata["resources_name"]        ||= DEFAULT_RESOURCES_NAME
+    metadata["resource_groups_name"]  ||= DEFAULT_RESOURCE_GROUPS_NAME
   end
 
   # setups the name of the workspace if the user did not pass any

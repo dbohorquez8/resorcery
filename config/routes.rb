@@ -3,9 +3,8 @@ Rails.application.routes.draw do
 
   resource :dashboard, only: [:show]
 
-  scope '/w/:wid', constraints: { wid: /[^\/]+/} do
-    resource :workspaces, :only => [:show], path: "(:name)"
-  end
+  get '/w/new', to: 'workspaces#new', as: :new_workspace
+  get '/w/:wid(/:name)', to: 'workspaces#show', constraints: { wid: /[^\/]+/}, as: :workspace
 
   api version: 1, module: "api/v1" do
     resources :workspaces, :only => [:create, :index]

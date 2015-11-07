@@ -15,6 +15,6 @@ class PagesController < ApplicationController
 
   def redirect_to_workspace
     workspace = current_user.workspaces.first
-    redirect_to workspaces_path(wid: workspace.unique_id, name: workspace.name.parameterize)
+    redirect_to workspace_path(wid: workspace.unique_id, name: workspace.name.parameterize)
   end
 end

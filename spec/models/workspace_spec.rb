@@ -16,32 +16,11 @@ RSpec.describe Workspace ,type: :model do
   end
 
   describe "before_create" do
-    before(:each) do
-      @workspace = create(:workspace, name: '')
-    end
+    let(:workspace) { build :workspace }
 
-    it "should setup the resources name" do
-      expect(@workspace.metadata[:resources_name]).to eq(Workspace::DEFAULT_RESOURCES_NAME)
-    end
-
-    it "should set the resource groups name" do
-      expect(@workspace.metadata[:resource_groups_name]).to eq(Workspace::DEFAULT_RESOURCE_GROUPS_NAME)
-    end
-
-    it "should generate a random name if I do not pass a name" do
-      expect(@workspace.name).not_to be_nil
-    end
-
-    it "should not setup the random name if I pass the name" do
-      workspace = create(:workspace, name: 'Something Clever')
-      expect(workspace.name).to eq('Something Clever')
-    end
-
-    it "should not change the name after update" do
-      workspace = create(:workspace, name: 'Something Clever')
-      workspace.metadata[:algo] = "algo"
+    it 'calls with_defaults' do
+      expect(workspace).to receive(:with_defaults)
       workspace.save
-      expect(workspace.reload.name).to eq('Something Clever')
     end
   end
 
@@ -60,4 +39,35 @@ RSpec.describe Workspace ,type: :model do
     end
   end
 
+  describe "with_defaults" do
+    it "sets generated name if name not set" do
+      workspace = build(:workspace, name: nil)
+
+      expect(workspace.with_defaults).to eq(workspace)
+      expect(workspace.name).not_to be_nil
+    end
+
+    it "doesn't set generated name if name already set" do
+      workspace = build(:workspace, name: "Something Clever")
+
+      expect(workspace.with_defaults).to eq(workspace)
+      expect(workspace.name).to eq("Something Clever")
+    end
+
+    it "sets default metadata" do
+      workspace = build(:workspace)
+
+      expect(workspace.with_defaults).to eq(workspace)
+      expect(workspace.metadata["resources_name"]).to eq(Workspace::DEFAULT_RESOURCES_NAME)
+      expect(workspace.metadata["resource_groups_name"]).to eq(Workspace::DEFAULT_RESOURCE_GROUPS_NAME)
+    end
+
+    it "only sets unset metadata fields" do
+      workspace = build(:workspace, metadata: {resources_name: "dreams"})
+
+      expect(workspace.with_defaults).to eq(workspace)
+      expect(workspace.metadata["resources_name"]).to eq("dreams")
+      expect(workspace.metadata["resource_groups_name"]).to eq(Workspace::DEFAULT_RESOURCE_GROUPS_NAME)
+    end
+  end
 end
