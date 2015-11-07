@@ -15,7 +15,7 @@
 //= require jquery_ujs
 //= require d3
 //= require parser
-//= require renderer
+//= require circle-packing
 //= require workspaces
 
 'use-strict';
