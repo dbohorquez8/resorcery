@@ -1,0 +1,32 @@
+.circle-packing {
+  margin: auto;
+}
+
+.circle-packing__node {
+  cursor: pointer;
+  
+  &:hover {
+    stroke: #000;
+    stroke-width: 1.5px;
+  }
+
+  &--leaf {
+    fill: white;
+  }
+
+  &--root {
+    fill: transparent !important;
+  }
+}
+
+.circle-packing__label {
+  font: 11px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-anchor: middle;
+  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+}
+
+.circle-packing__label,
+.circle-packing__node--root,
+.circle-packing__node--leaf {
+  pointer-events: none;
+}

@@ -45,6 +45,8 @@ GEM
     builder (3.2.2)
     coderay (1.1.0)
     color-generator (0.0.4)
+    d3-rails (3.5.6)
+      railties (>= 3.1)
     date_validator (0.8.1)
       activemodel
     debug_inspector (0.0.2)
@@ -196,6 +198,7 @@ DEPENDENCIES
   active_model_serializers
   bazaar
   color-generator
+  d3-rails
   date_validator
   factory_girl_rails (~> 4.0)
   figaro
