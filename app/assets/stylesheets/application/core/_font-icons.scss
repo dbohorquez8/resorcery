@@ -1,3 +1,40 @@
+@font-face {
+  font-family: 'Resorcery-Iconset';
+  src: url('fonts/Resorcery-Iconset.eot');
+}
+@font-face {
+  font-family: 'Resorcery-Iconset';
+  src: url(data:application/x-font-ttf;charset=utf-8;base64,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) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon {
+  font-family: 'Resorcery-Iconset';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Pawn icon created by Arthur Shlain from the Noun Project */
+
+.icon--army:before {
+  content: "\e900";
+}
+.icon--group:before {
+  content: "\e901";
+}
+.icon--pawn:before {
+  content: "\e902";
+}
+
 .icon-lg {
   font-size: (4em / 3);
   line-height: (3em / 4);
@@ -7,91 +44,3 @@
 .icon-3x { font-size: 3em; }
 .icon-4x { font-size: 4em; }
 .icon-5x { font-size: 5em; }
-
-[class^="icon-"], [class*=" icon-"] {
-  font-family: $font-family-icons;
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  display: inline-block;
-
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.icon-chat:before {
-  content: "\e617";
-}
-.icon-antena:before {
-  content: "\e601";
-}
-.icon-arrow-down:before {
-  content: "\e602";
-}
-.icon-arrow-left:before {
-  content: "\e603";
-}
-.icon-arrow-right:before {
-  content: "\e604";
-}
-.icon-arrow-up:before {
-  content: "\e605";
-}
-.icon-check:before {
-  content: "\e606";
-}
-.icon-clip:before {
-  content: "\e607";
-}
-.icon-clock:before {
-  content: "\e608";
-}
-.icon-close-alt:before {
-  content: "\e609";
-}
-.icon-close:before {
-  content: "\e60a";
-}
-.icon-cog:before {
-  content: "\e60b";
-}
-.icon-edit:before {
-  content: "\e60c";
-}
-.icon-ellipsis:before {
-  content: "\e60d";
-}
-.icon-envelope:before {
-  content: "\e60e";
-}
-.icon-glass:before {
-  content: "\e60f";
-}
-.icon-link:before {
-  content: "\e610";
-}
-.icon-pencil:before {
-  content: "\e611";
-}
-.icon-question:before {
-  content: "\e612";
-}
-.icon-tag:before {
-  content: "\e613";
-}
-.icon-thumbs-down:before {
-  content: "\e614";
-}
-.icon-thumbs-up:before {
-  content: "\e615";
-}
-.icon-two:before {
-  content: "\e616";
-}
-.icon-person:before {
-  content: "\e600";
-}

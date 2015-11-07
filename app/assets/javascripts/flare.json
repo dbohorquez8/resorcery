@@ -4,7 +4,7 @@
   {
    "name": "cluster",
    "children": [
-    {"name": "AgglomerativeCluster", "size": 1},
+    {"name": "AgglomerativeCluster", "size": 1, "image": "https://www.gravatar.com/avatar/045d06893438f229aec3dfd40bbd4137?s=64&d=https%3A%2F%2Fs3.amazonaws.com%2Fdashable-production%2Fassets%2Fimages%2Fuser%2Favatar%2Fmissing.jpg"},
     {"name": "CommunityStructure", "size": 1},
     {"name": "HierarchicalCluster", "size": 1},
     {"name": "MergeEdge", "size": 1}

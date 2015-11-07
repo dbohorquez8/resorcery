@@ -3,19 +3,24 @@
 }
 
 .circle-packing__node {
+  stroke: $brand-primary;
+  stroke-width: 10px;
+  fill: $brand-primary;
   cursor: pointer;
   
   &:hover {
-    stroke: #000;
-    stroke-width: 1.5px;
+    fill: lighten($brand-primary, 5%);
+    stroke: lighten($brand-primary, 5%);
   }
 
   &--leaf {
     fill: white;
+    stroke-width: 0;
   }
 
   &--root {
     fill: transparent !important;
+    stroke-width: 0;
   }
 }
 

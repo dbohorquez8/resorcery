@@ -9,7 +9,7 @@ $(function (){
       .interpolate(d3.interpolateHcl);
 
   var pack = d3.layout.pack()
-      .padding(2)
+      .padding(15)
       .size([diameter - margin, diameter - margin])
       .value(function(d) { return d.size; })
 
@@ -30,7 +30,6 @@ $(function (){
         .data(nodes)
       .enter().append("circle")
         .attr("class", function(d) { return d.parent ? d.children ? "circle-packing__node" : "circle-packing__node circle-packing__node--leaf" : "circle-packing__node circle-packing__node--root"; })
-        .style("fill", function(d) { return d.children ? color(d.depth) : null; })
         .on("click", function(d) { if (focus !== d) zoom(d), d3.event.stopPropagation(); });
 
     var text = svg.selectAll("text")
