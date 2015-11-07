@@ -1,11 +1,13 @@
-var NewResourceGroupForm = (function(){
+var NewResourceForm = (function(){
   'use strict';
-  var $form, $name, $submit;
+  var $form, $name, $submit, $resourceList;
 
-  function init(formSelector){
+  function init(formSelector, listSelector){
     $form = $(formSelector);
     $name = $form.find('.js-name');
     $submit = $form.find('.js-submit');
+
+    $resourceList = $(listSelector);
 
     EasyForm.listen($form, {
       successCallback: successCallback,
@@ -23,27 +25,16 @@ var NewResourceGroupForm = (function(){
 
   function formData(formObject){
     var params = {
-      resource_group: {
+      resource: {
         name: formObject.getVal('.js-name')
       }
     };
     return params;
   }
 
-  // define handlers for submit button.
-  function successCallback(something){
-    // BEGINING - update scheduled messages glance
-    // API.post({
-    //   url:             '/update/scheduled_messages',
-    //   data:            {},
-    //   headers:         { 'x-acpt': signedRequest },
-    //   successCallback: function(something){
-    //     console.log(something);
-    //   },
-    //   failureCallback: function(something){
-    //     console.log(something);
-    //   }
-    // });
+  function successCallback(data){
+    var template = ich['js-resources-list-item-template'];
+    $resourceList.append(template(data.response));
   }
 
   function failureCallback(something){

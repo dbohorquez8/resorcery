@@ -16,14 +16,16 @@
 //= require d3
 //= require parser
 //= require circle-packing
+//= require notify
+//= require icanhaz
 
 // js for api wrappers and consumers
 
-//= require notify
 //= require api_wrapper/base
 //= require api_wrapper/easy_form
 
 //= require api_consumers/new_resource_group
+//= require api_consumers/new_resource
 
 //= require workspaces
 
