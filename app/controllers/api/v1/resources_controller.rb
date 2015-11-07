@@ -1,4 +1,4 @@
-class Api::V1::ResourceController < ApiController
+class Api::V1::ResourcesController < ApiController
   include WorkspaceFinder
 
   version 1
