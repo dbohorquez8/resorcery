@@ -19,5 +19,7 @@ end
 
 group :development do
   gem 'web-console', '~> 2.0'
+  gem 'guard', '2.13.0'
+  gem 'guard-rspec', require: false
 end
 
