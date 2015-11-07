@@ -5,7 +5,7 @@ class Workspace < ActiveRecord::Base
   validates :name, presence: true
   validates :user_id, presence: true
 
-  has_many :resource_groups, foreign_key: :workspace_id, inverse_of: :worskpace
+  has_many :resource_groups, foreign_key: :workspace_id, inverse_of: :workspace
   has_many :resources, foreign_key: :workspace_id, inverse_of: :workspace
   has_many :allocations, inverse_of: :workspace
   belongs_to :user, inverse_of: :workspaces

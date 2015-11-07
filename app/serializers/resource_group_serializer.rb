@@ -1,3 +1,3 @@
 class ResourceGroupSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :name, :metadata
 end

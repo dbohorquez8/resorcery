@@ -4,8 +4,13 @@ class Api::V1::ResourceGroupsController < ApiController
   version 1
 
   def create
-    resource = @workspace.resource_groups.create(resource_group_params)
-    expose resource, serializer: ResourceGroupSerializer
+    resource = @workspace.resource_groups.build(resource_group_params)
+
+    if resource.save
+      expose resource, serializer: ResourceGroupSerializer
+    else
+      creation_error resource.errors
+    end
   end
 
   private
