@@ -7,6 +7,14 @@ class PagesController < ApplicationController
   protected
 
   def redirect_signed_in_users
-    redirect_to dashboard_path if user_signed_in?
+    return unless user_signed_in?
+
+    redirect_to_workspace and return if current_user.workspaces.one?
+    redirect_to dashboard_path
+  end
+
+  def redirect_to_workspace
+    workspace = current_user.workspaces.first
+    redirect_to workspaces_path(wid: workspace.unique_id, name: workspace.name.parameterize)
   end
 end
