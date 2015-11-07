@@ -16,6 +16,8 @@ $(function (){
     Resorcery.render(workspace);
   }
 
+});
+
   $(document).on('ajax:success', '#new_workspace', function (e, data, status, xhr) {
     window.location = data.response.location;
   });
