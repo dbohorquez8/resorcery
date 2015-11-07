@@ -32,7 +32,7 @@
 	display: inline-block;
 }
 .portfolio-item__title{
-	@extend .weight-semibold;
+	@extend .weight--semibold;
 	margin-bottom: $half-spacing-unit;
 }
 .portfolio-item__text{
