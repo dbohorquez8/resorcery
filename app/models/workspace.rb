@@ -27,6 +27,14 @@ class Workspace < ActiveRecord::Base
     self
   end
 
+  def resource_groups_name
+    metadata["resource_groups_name"].capitalize
+  end
+
+  def resources_name
+    metadata["resources_name"].capitalize
+  end
+
   private
   # this method sets the default resource name and resource group name for a worskpace.
   # remember the user is able to change this later

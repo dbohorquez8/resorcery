@@ -16,6 +16,14 @@
 //= require d3
 //= require parser
 //= require circle-packing
+
+// js for api wrappers and consumers
+
+//= require api_wrapper/base
+//= require api_wrapper/easy_form
+
+//= require api_consumers/new_resource_group
+
 //= require workspaces
 
 'use-strict';
