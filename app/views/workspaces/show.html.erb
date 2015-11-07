@@ -25,10 +25,10 @@
     </button>
 
     <div class="groups sidebar workspace__sidebar--right js-groups-sidebar">
-      <form action="<%= resource_groups_path(version:1, wid: @workspace.unique_id)%>" data-method="post" >
+      <form class="js-new-resource-group-form" action="<%= resource_groups_path(version:1, wid: @workspace.unique_id)%>" data-method="post" >
         <div class="form-inline">
-          <input type="text" class="form-control form-control--clear input--large js-group-input-name" placeholder="<%= @workspace.resource_groups_name %> Name" name="resource_group[name]" data-name="name">
-          <input type="submit" class="button button--info button--large float--right" value="OK">
+          <input type="text" class="form-control form-control--clear input--large js-group-input-name js-name" placeholder="<%= @workspace.resource_groups_name %> Name" name="resource_group[name]" data-name="name">
+          <input type="submit" class="button button--info button--large float--right js-submit" value="OK">
         </div>
       </form>
     </div>
@@ -38,6 +38,7 @@
 <% content_for :javascripts do %>
   <script type="text/javascript" charset="utf-8">
     Resorcery.workspace_id = <%= @workspace.unique_id.to_json.html_safe %>;
+    NewResourceGroupForm.init(".js-new-resource-group-form");
   </script>
 <% end %>
 

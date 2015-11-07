@@ -1,11 +1,10 @@
 var EasyForm = (function(){
   "use strict";
-  var $form, $formObject, $formLabel, $successCallback, $failureCallback, $data;
+  var $form, $formObject, $successCallback, $failureCallback, $data;
 
   function listen(form, options){
     $form            = form;
     $formObject      = FormObject.init($form);
-    $formLabel       = options.formLabel;
     $successCallback = options.successCallback || function(){};
     $failureCallback = options.failureCallback || function(){};
     $data            = options.data;
