@@ -1,2 +1,7 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+$(function (){
+  $('.js-toggle-sidebar').on('click', function(){
+    var target = $(this).data('target');
+    $(target).toggleClass('is-visible');
+    $(this).toggleClass('is-active');
+  });
+});

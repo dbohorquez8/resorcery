@@ -11,22 +11,44 @@
 %workspace__orb {
   position: absolute;
   bottom: -15px;
+  z-index: 1;
+
+  &.is-active,
+  &.is-active:hover,
+  &.is-active:active,
+  &.is-active:focus {
+    background: $brand-default;
+    font-size: 1em;
+    height: 30px;
+    bottom: 0;
+
+    &:hover {
+      background: darken($brand-default, 10%);
+    }
+  }
 }
 
 .workspace__orb {
   &--left {
     @extend %workspace__orb;
     left: -15px;
+
+    &.is-active {
+      border-radius: 0 15px 0 0;
+    }
   }
 
   &--right {
     @extend %workspace__orb;
     right: -15px;
+
+    &.is-active {
+      border-radius: 15px 0 0 0;
+    }
   }
 }
 
 %workspace__sidebar {
-  display: none;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -35,11 +57,30 @@
 .workspace__sidebar {
   &--left {
     @extend %workspace__sidebar;
+    @include slide-in('right', $sidebar-width, 0.2s, ease);
     left: 0;
   }
 
   &--right {
     @extend %workspace__sidebar;
+    @include slide-in('left', $sidebar-width, 0.2s, ease);
     right: 0;
+    top: auto;
+    height: 120px;
+    border-radius: 35px 0 0 0;
+  }
+}
+
+.workspace-orb__label {
+  .is-active > & {
+    display: none;
+  }
+}
+
+.workspace-orb__label--alt {
+  display: none;
+
+  .is-active > & {
+    display: inline;
   }
 }

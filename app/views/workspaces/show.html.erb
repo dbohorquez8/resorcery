@@ -1,8 +1,11 @@
 <div class="workspace">
   <div class="resources-container">
-    <button class="orb orb--resources workspace__orb--left js-toggle-resources-sidebar">R</button>
+    <button class="orb orb--resources workspace__orb--left js-toggle-sidebar" data-target=".js-resources-sidebar">
+      <span class="workspace-orb__label">R</span>
+      <span class="workspace-orb__label--alt">Close</span>
+    </button>
     
-    <section class="resources sidebar workspace__sidebar--left">
+    <section class="resources sidebar workspace__sidebar--left js-resources-sidebar">
       <h1 class="resources__title">Resources</h1>
       <ul class="resources__list">
         <%- 10.times do %>
@@ -12,7 +15,19 @@
     </section>
   </div>
 
-  <div class="groups">
-    <button class="orb orb--groups workspace__orb--right js-toggle-groups-sidebar">P</button>  
+  <div class="groups-container">
+    <button class="orb orb--groups workspace__orb--right js-toggle-sidebar" data-target=".js-groups-sidebar">
+      <span class="workspace-orb__label">P</span>
+      <span class="workspace-orb__label--alt">Close</span>
+    </button>
+
+    <div class="groups sidebar workspace__sidebar--right js-groups-sidebar">
+      <form action="">
+        <div class="form-inline">
+          <input type="text" class="form-control form-control--clear input--large js-group-input-name" placeholder="Project Name">
+          <input type="submit" class="button button--info button--large float--right" value="OK">
+        </div>
+      </form>      
+    </div>
   </div>
 </div>

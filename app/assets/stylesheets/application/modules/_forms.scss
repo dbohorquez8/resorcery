@@ -52,7 +52,7 @@ input[type=file]{
 }
 
 .form-control {
-  @include transition('border-color ease-in-out .15s, box-shadow ease-in-out .15s');
+  @include transition('border-color ease-in-out .15s, box-shadow ease-in-out .15s, background-color ease-in-out .15s');
   @include form-control-focus($color-brand);
   @include placeholder();
   display: block;
@@ -323,5 +323,15 @@ label>sup {
     & + .form-stacked__button{
       margin-top: $half-spacing-unit;
     }
+  }
+}
+
+.form-control--clear {
+  border: 0 none;
+
+  &:focus,
+  &:active {
+    background-color: darken(white, 5%);
+    box-shadow: none;
   }
 }

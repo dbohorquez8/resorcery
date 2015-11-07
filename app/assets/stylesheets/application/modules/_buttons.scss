@@ -1,27 +1,31 @@
+.button {
+  @include button-size($padding-base-vertical, $padding-base-vertical * 2, 1em, 1em, 5px);
+}
+
 .button--default {
   @include button-style($btn-default-color, $btn-default-bg, $btn-default-border);
 }
 .button-gradient--default {
-  @include button-style($btn-default-color, #E6EBEE, $btn-default-border);
+  @include button-style($btn-default-color, #E6EBEE, transparent);
 }
 .button--primary {
-  @include button-style($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+  @include button-style($btn-primary-color, $btn-primary-bg, transparent);
 }
 // Success appears as green
 .button--success {
-  @include button-style($btn-success-color, $btn-success-bg, $btn-success-border);
+  @include button-style($btn-success-color, $btn-success-bg, transparent);
 }
 // Info appears as blue-green
 .button--info {
-  @include button-style($btn-info-color, $btn-info-bg, $btn-info-border);
+  @include button-style($btn-info-color, $btn-info-bg, transparent);
 }
 // Warning appears as orange
 .button--warning {
-  @include button-style($btn-warning-color, $btn-warning-bg, $btn-warning-border);
+  @include button-style($btn-warning-color, $btn-warning-bg, transparent);
 }
 // Danger and error appear as red
 .button--danger {
-  @include button-style($btn-danger-color, $btn-danger-bg, $btn-danger-border);
+  @include button-style($btn-danger-color, $btn-danger-bg, transparent);
 }
 
 .button-border{
@@ -88,4 +92,8 @@
 
 .group-buttons{
   margin: $base-spacing-unit * 2 0 $base-spacing-unit * 2;
+}
+
+.button--large {
+  @include button-size(0.5em, 1em, 1.25em, 1em, 5px)
 }

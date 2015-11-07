@@ -15,3 +15,7 @@
 //= require_tree .
 
 'use-strict';
+
+Resorcery = {
+  utils: {}
+};

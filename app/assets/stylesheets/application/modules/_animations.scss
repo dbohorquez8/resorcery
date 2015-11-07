@@ -1,0 +1,23 @@
+@mixin slide-in($direction, $distance, $duration, $ease) {
+  transition: transform $duration $ease;
+
+  @if $direction == 'left' {
+    transform: translate($distance);
+  }
+    
+  @if $direction == 'right' {
+    transform: translate(-$distance);
+  }
+
+  @if $direction == 'top' {
+    transform: translate(0, $distance);
+  }  
+
+  @if $direction == 'bottom' {
+    transform: translate(0, (-$distance));
+  }
+
+  &.is-visible {
+    transform: translate(0); 
+  }
+}
