@@ -16,3 +16,7 @@
 !/log/.keep
 /tmp
 config/database.yml
+
+# Ruby version manager files
+.ruby-gemset
+.ruby-version
