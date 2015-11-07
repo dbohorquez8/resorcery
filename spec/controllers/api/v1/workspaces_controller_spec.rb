@@ -28,8 +28,12 @@ RSpec.describe Api::V1::WorkspacesController, "Actions", type: :controller, test
       end
 
       it "should return the newly created workspace" do
-        post :create, api_params(workspace: {name: ""})
-        expect(json_response(response.body)[:unique_id]).to eq(Workspace.last.unique_id)
+        post :create, api_params(workspace: {name: "", metadata: {resources_name: 'dreams', weird_field: 'bah'}})
+        parsed_body = json_response(response.body)
+
+        expect(parsed_body[:unique_id]).to eq(Workspace.last.unique_id)
+        expect(parsed_body[:metadata][:resources_name]).to eq('dreams')
+        expect(parsed_body[:metadata]).not_to have_key(:weird_field)
       end
     end
   end

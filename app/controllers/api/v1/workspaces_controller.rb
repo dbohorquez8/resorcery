@@ -12,6 +12,6 @@ class Api::V1::WorkspacesController < ApiController
 
   private
     def workspace_params
-      params.require(:workspace).permit(:name, metadata: [])
+      params.require(:workspace).permit(:name, metadata: [:resources_name, :resource_groups_name])
     end
 end
