@@ -1,4 +1,6 @@
 class Api::V1::WorkspacesController < ApiController
+  include ManageDefaultDates
+  before_action :init_dates_range
 
   version 1
 
@@ -12,8 +14,10 @@ class Api::V1::WorkspacesController < ApiController
   end
 
   def show
-    workspace = current_user.workspaces.from_unique_id(workspace_id).includes(:resources, :resource_groups, :allocations).first!
-    expose workspace, serializer: WorkspaceSerializer
+    workspace = current_user.workspaces.from_unique_id(workspace_id).includes(:resources, :resource_groups).first!
+    serialized = WorkspaceSerializer.new(workspace).serializable_hash
+    serialized[:allocations] = ActiveModel::ArraySerializer.new(workspace.allocations.in_range(@start_date, @end_date), each_serializer: AllocationSerializer).serializable_array
+    expose(serialized)
   end
 
   private

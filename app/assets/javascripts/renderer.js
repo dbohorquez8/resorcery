@@ -1,5 +1,5 @@
 $(function (){
-  Resorcery.render = function (workspace) {
+  Resorcery.render = function () {
     var margin = 20,
       diameter = $(".js-workspace-chart").height();
       width = $(".js-workspace-chart").width();

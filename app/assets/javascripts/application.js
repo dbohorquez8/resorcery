@@ -14,9 +14,9 @@
 //= require lodash
 //= require jquery_ujs
 //= require d3
-//= require workspaces
 //= require parser
 //= require renderer
+//= require workspaces
 
 'use-strict';
 
