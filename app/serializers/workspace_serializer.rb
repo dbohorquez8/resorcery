@@ -1,3 +1,3 @@
 class WorkspaceSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :name, :unique_id, :metadata
 end

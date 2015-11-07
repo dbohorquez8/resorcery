@@ -3,10 +3,12 @@ class Workspace < ActiveRecord::Base
   DEFAULT_RESOURCE_GROUPS_NAME = "group".freeze
 
   validates :name, presence: true
+  validates :user_id, presence: true
 
   has_many :resource_groups, foreign_key: :workspace_id, inverse_of: :worskpace
   has_many :resources, foreign_key: :workspace_id, inverse_of: :worskpace
   has_many :allocations, inverse_of: :workspace
+  belongs_to :user, inverse_of: :workspaces
 
   before_validation :init_resource_name_and_group_name, on: :create
   before_validation :init_name_generator, on: :create

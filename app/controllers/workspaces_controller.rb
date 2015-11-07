@@ -17,15 +17,15 @@ class WorkspacesController < ApplicationController
     end
   end
 
-  def create
-    @workspace = Workspace.create(workspace_params)
-    render json: @workspace, serializer: WorkspaceSerializer, status: :created
-  end
+  # def create
+  #   @workspace = Workspace.create(workspace_params)
+  #   render json: @workspace, serializer: WorkspaceSerializer, status: :created
+  # end
 
-  def destroy
-    @workspace.destroy
-    head :no_content
-  end
+  # def destroy
+  #   @workspace.destroy
+  #   head :no_content
+  # end
 
   private
     def workspace

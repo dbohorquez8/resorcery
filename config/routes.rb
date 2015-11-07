@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+
   resources :workspaces
 
   api version: 1, module: "api/v1" do

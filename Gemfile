@@ -15,12 +15,14 @@ gem 'figaro', '~> 1.1.1'
 gem 'hashids', '~> 1.0.2'
 gem 'rocket_pants', '~> 1.0'
 gem 'kaminari', '~> 0.16.3'
+gem 'devise'
 
 # random name generator
 gem 'bazaar', '0.0.2'
 gem "color-generator", '0.0.4'
 
 group :development, :test do
+  gem 'pry'
   gem "factory_girl_rails", "~> 4.0"
   gem 'rspec-rails', '~> 3.0'
 end

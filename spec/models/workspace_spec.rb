@@ -12,6 +12,7 @@ RSpec.describe Workspace ,type: :model do
     it { should have_many(:resource_groups).class_name('ResourceGroup').with_foreign_key("workspace_id") }
     it { should have_many(:resources).class_name('Resource').with_foreign_key("workspace_id") }
     it { should have_many(:allocations).inverse_of(:workspace) }
+    it { should belong_to(:user).inverse_of(:workspaces) }
   end
 
   describe "before_create" do
