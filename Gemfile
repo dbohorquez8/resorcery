@@ -9,7 +9,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 
 gem 'active_model_serializers'
-
+gem 'date_validator'
 # random name generator
 gem 'bazaar'
 gem "color-generator"

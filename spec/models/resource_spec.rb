@@ -27,5 +27,6 @@ RSpec.describe Resource, type: :model do
 
   describe "Associations" do
     it { should belong_to(:workspace) }
+    it { should have_many(:allocations).inverse_of(:resource) }
   end
 end

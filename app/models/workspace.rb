@@ -6,6 +6,7 @@ class Workspace < ActiveRecord::Base
 
   has_many :resource_groups, foreign_key: :workspace_id, inverse_of: :worskpace
   has_many :resources, foreign_key: :workspace_id, inverse_of: :worskpace
+  has_many :allocations, inverse_of: :workspace
 
   before_validation :init_resource_name_and_group_name
   before_validation :init_name_generator

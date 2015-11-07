@@ -11,6 +11,7 @@ RSpec.describe Workspace ,type: :model do
   describe "Associations" do
     it { should have_many(:resource_groups).class_name('ResourceGroup').with_foreign_key("workspace_id") }
     it { should have_many(:resources).class_name('Resource').with_foreign_key("workspace_id") }
+    it { should have_many(:allocations).inverse_of(:workspace) }
   end
 
   describe "before_create" do

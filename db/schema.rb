@@ -11,11 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151107041939) do
+ActiveRecord::Schema.define(version: 20151107045129) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+
+  create_table "allocations", force: :cascade do |t|
+    t.date     "start_date"
+    t.date     "end_date"
+    t.hstore   "metadata",          default: {}, null: false
+    t.integer  "workspace_id"
+    t.integer  "resource_id"
+    t.integer  "resource_group_id"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "allocations", ["start_date", "end_date"], name: "index_allocations_on_start_date_and_end_date", using: :btree
+  add_index "allocations", ["workspace_id", "resource_id", "resource_group_id"], name: "workspace_resource_and_group", using: :btree
 
   create_table "resource_groups", force: :cascade do |t|
     t.string   "name"
