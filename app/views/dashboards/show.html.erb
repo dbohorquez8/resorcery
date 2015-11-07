@@ -1,0 +1,9 @@
+<h1>Dashboard page</h1>
+
+<ul>
+  <% @workspaces.each do |workspace| %>
+    <li>
+      <%= link_to workspace.name, workspaces_path(wid: workspace.unique_id, name: workspace.name.parameterize)%>
+    </li>
+  <% end -%>
+</ul>

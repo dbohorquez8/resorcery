@@ -22,6 +22,7 @@ gem 'bazaar', '0.0.2'
 gem "color-generator", '0.0.4'
 
 group :development, :test do
+  gem 'timecop', '~>0.3.5'
   gem 'pry'
   gem "factory_girl_rails", "~> 4.0"
   gem 'rspec-rails', '~> 3.0'

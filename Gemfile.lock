@@ -210,6 +210,7 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.1)
+    timecop (0.3.5)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.7.2)
@@ -247,6 +248,7 @@ DEPENDENCIES
   rspec-rails (~> 3.0)
   sass-rails (~> 5.0)
   shoulda-matchers (~> 2.7.0)
+  timecop (~> 0.3.5)
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
 

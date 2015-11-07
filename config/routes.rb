@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :workspaces
+  resource :dashboard, only: [:show]
+
+  scope '/w/:wid', constraints: { wid: /[^\/]+/} do
+    resource :workspaces, :only => [:show], path: "(:name)"
+  end
 
   api version: 1, module: "api/v1" do
     resources :workspaces, :only => [:create, :index]
@@ -13,5 +17,5 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: "workspaces#index"
+  root to: "pages#index"
 end
