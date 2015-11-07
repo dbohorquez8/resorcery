@@ -8,7 +8,7 @@ RSpec.describe WorkspacesController, type: :controller do
     let(:perform) { get :index }
     before { perform }
 
-    it { should be_successful }
+    it { expect(subject).to be_successful }
     it { expect(assigns(:workspaces)).to eq(workspaces) }
   end
 
@@ -19,7 +19,7 @@ RSpec.describe WorkspacesController, type: :controller do
       let(:workspace) { create :workspace }
       let(:perform) { get :show, id: workspace.id, format: :json }
 
-      it { should be_successful }
+      it { expect(subject).to be_successful }
       it { expect(assigns(:workspace)).to eq(workspace) }
 
       it 'returns proper workspace json payload' do
@@ -36,8 +36,8 @@ RSpec.describe WorkspacesController, type: :controller do
     context 'not found' do
       let(:perform) { get :show, id: 'bah', format: :json }
 
-      it { should be_not_found }
-      it { subject.body.should be_empty }
+      it { expect(subject).to be_not_found }
+      it { expect(subject.body).to be_empty }
 
       it 'doesnt assign @workspace' do
         expect(assigns(:workspace)).to be_nil
@@ -58,7 +58,7 @@ RSpec.describe WorkspacesController, type: :controller do
     describe 'response' do
       before { perform }
 
-      it { should be_successful }
+      it { expect(subject).to be_successful }
       it { expect(assigns(:workspace)).to be }
 
       it 'returns proper workspace json payload' do
@@ -87,8 +87,8 @@ RSpec.describe WorkspacesController, type: :controller do
       describe 'response' do
         before { perform }
 
-        it { should be_successful }
-        it { subject.body.should be_empty }
+        it { expect(subject).to be_successful }
+        it { expect(subject.body).to be_empty }
 
         it 'assigns @workspace' do
           expect(assigns(:workspace)).to eq(workspace)
@@ -104,8 +104,8 @@ RSpec.describe WorkspacesController, type: :controller do
       describe 'response' do
         before { perform }
 
-        it { should be_not_found }
-        it { subject.body.should be_empty }
+        it { expect(subject).to be_not_found }
+        it { expect(subject.body).to be_empty }
 
         it 'doesnt assign @workspace' do
           expect(assigns(:workspace)).to be_nil
