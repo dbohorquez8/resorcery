@@ -1,0 +1,9 @@
+.main-navigation{
+	&__list{}
+	&__item{}
+	&__link{
+		&.is-active{}
+		&.has-icon{}
+	}
+	&__icon{}
+}

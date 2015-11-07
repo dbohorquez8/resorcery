@@ -1,0 +1,45 @@
+.workspace {
+  background: #EEE;
+  overflow: hidden;
+  position: absolute;
+  top: $header-height;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+%workspace__orb {
+  position: absolute;
+  bottom: -15px;
+}
+
+.workspace__orb {
+  &--left {
+    @extend %workspace__orb;
+    left: -15px;
+  }
+
+  &--right {
+    @extend %workspace__orb;
+    right: -15px;
+  }
+}
+
+%workspace__sidebar {
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+.workspace__sidebar {
+  &--left {
+    @extend %workspace__sidebar;
+    left: 0;
+  }
+
+  &--right {
+    @extend %workspace__sidebar;
+    right: 0;
+  }
+}

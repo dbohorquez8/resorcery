@@ -21,3 +21,6 @@ config/database.yml
 .ruby-gemset
 .ruby-version
 *.orig
+
+#OS Files
+*.DS_Store
