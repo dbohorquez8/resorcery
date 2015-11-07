@@ -34,5 +34,7 @@ module Resorcery
       :domain         => 'heroku.com',
       :enable_starttls_auto => true
     }
+
+    config.exceptions_app = self.routes
   end
 end
