@@ -6,11 +6,17 @@ class WorkspacesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
+      format.json { render json: @workspaces, each_serializer: WorkspaceSerializer }
     end
   end
 
   def show
-    head :no_content
+    render json: @workspace, serializer: WorkspaceSerializer
+  end
+
+  def create
+    @workspace = Workspace.create(workspace_params)
+    render json: @workspace, serializer: WorkspaceSerializer, status: :created
   end
 
   def destroy
@@ -21,5 +27,9 @@ class WorkspacesController < ApplicationController
   private
     def workspace
       @workspace ||= Workspace.find(params[:id])
+    end
+
+    def workspace_params
+      params.require(:workspace).permit(:name, metadata: [])
     end
 end

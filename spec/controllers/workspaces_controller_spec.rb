@@ -9,10 +9,7 @@ RSpec.describe WorkspacesController, type: :controller do
     before { perform }
 
     it { should be_successful }
-
-    it 'assigns @workspaces' do
-      expect(assigns(:workspaces)).to eq(workspaces)
-    end
+    it { expect(assigns(:workspaces)).to eq(workspaces) }
   end
 
   describe 'GET #show' do
@@ -23,9 +20,16 @@ RSpec.describe WorkspacesController, type: :controller do
       let(:perform) { get :show, id: workspace.id }
 
       it { should be_successful }
+      it { expect(assigns(:workspace)).to eq(workspace) }
 
-      it 'assigns @workspace' do
-        expect(assigns(:workspace)).to eq(workspace)
+      it 'returns proper workspace json payload' do
+        decoded_body = JSON.parse response.body
+        expect(decoded_body).to eq({
+          "workspace" => {
+            "id" => workspace.id,
+            "name" => workspace.name
+          }
+        })
       end
     end
 
@@ -37,6 +41,34 @@ RSpec.describe WorkspacesController, type: :controller do
 
       it 'doesnt assign @workspace' do
         expect(assigns(:workspace)).to be_nil
+      end
+    end
+  end
+
+  describe 'POST #create' do
+    let(:perform) { post :create, params }
+    let(:params) {
+      {
+        workspace: { name: 'Test Workspace' }
+      }
+    }
+
+    it { expect{perform}.to change(Workspace, :count).by(1) }
+
+    describe 'response' do
+      before { perform }
+
+      it { should be_successful }
+      it { expect(assigns(:workspace)).to be }
+
+      it 'returns proper workspace json payload' do
+        decoded_body = JSON.parse response.body
+        expect(decoded_body).to eq({
+          "workspace" => {
+            "id" => assigns(:workspace).id,
+            "name" => 'Test Workspace'
+          }
+        })
       end
     end
   end
