@@ -36,6 +36,27 @@ RSpec.describe Workspace ,type: :model do
       expect(workspace.name).to eq('Something Clever')
     end
 
+    it "should not change the name after update" do
+      workspace = create(:workspace, name: 'Something Clever')
+      workspace.metadata[:algo] = "algo"
+      workspace.save
+      expect(workspace.reload.name).to eq('Something Clever')
+    end
+  end
+
+  describe "querying using unique id" do
+    it "should encode the workspace id" do
+      workspace = create(:workspace, name: 'Something Clever')
+      expect(workspace.unique_id).not_to eq(workspace.id)
+    end
+
+    it "should be able to find workspaces via the unique id" do
+      workspace = create(:workspace)
+      create(:workspace)
+      create(:workspace)
+      create(:workspace)
+      expect(Workspace.from_unique_id(workspace.unique_id).first.id).to eq(workspace.id)
+    end
   end
 
 end

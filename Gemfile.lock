@@ -57,6 +57,8 @@ GEM
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
     ffi (1.9.10)
+    figaro (1.1.1)
+      thor (~> 0.14)
     formatador (0.2.5)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
@@ -74,6 +76,7 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
+    hashids (1.0.2)
     i18n (0.7.0)
     jquery-rails (4.0.5)
       rails-dom-testing (~> 1.0)
@@ -195,8 +198,10 @@ DEPENDENCIES
   color-generator
   date_validator
   factory_girl_rails (~> 4.0)
+  figaro
   guard (= 2.13.0)
   guard-rspec
+  hashids
   jquery-rails
   pg (= 0.18.3)
   rails (= 4.2.4)

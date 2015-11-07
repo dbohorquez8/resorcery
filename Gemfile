@@ -10,6 +10,9 @@ gem 'jquery-rails'
 
 gem 'active_model_serializers'
 gem 'date_validator'
+gem 'figaro'
+gem 'hashids'
+
 # random name generator
 gem 'bazaar'
 gem "color-generator"

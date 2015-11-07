@@ -24,3 +24,6 @@ config/database.yml
 
 #OS Files
 *.DS_Store
+
+# Ignore application configuration
+/config/application.yml

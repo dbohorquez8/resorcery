@@ -8,8 +8,15 @@ class Workspace < ActiveRecord::Base
   has_many :resources, foreign_key: :workspace_id, inverse_of: :worskpace
   has_many :allocations, inverse_of: :workspace
 
-  before_validation :init_resource_name_and_group_name
-  before_validation :init_name_generator
+  before_validation :init_resource_name_and_group_name, on: :create
+  before_validation :init_name_generator, on: :create
+
+  scope :from_unique_id, -> (uid) { where(id: $hashids.decode(uid).first) }
+
+  # this method returns a unique id for the workspace. This is so we can have unique urls
+  def unique_id
+    $hashids.encode(self.id)
+  end
 
   private
   # this method sets the default resource name and resource group name for a worskpace.
