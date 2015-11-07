@@ -10,7 +10,15 @@ var NewResourceGroupForm = (function(){
     EasyForm.listen($form, {
       successCallback: successCallback,
       failureCallback: failureCallback,
+      failureCallback: failureCallback,
       data:            formData
+    });
+
+    $form.on("submit-finished", function(evt, status, data){
+      if(status == "success"){
+        // clean the form
+        $name.val("");
+      }
     });
   }
 

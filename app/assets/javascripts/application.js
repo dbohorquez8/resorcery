@@ -19,6 +19,7 @@
 
 // js for api wrappers and consumers
 
+//= require notify
 //= require api_wrapper/base
 //= require api_wrapper/easy_form
 

@@ -334,4 +334,7 @@ label>sup {
     background-color: darken(white, 5%);
     box-shadow: none;
   }
+  &.has-error{
+    @include form-control-validation($state-danger-text, $state-danger-text, $state-danger-bg);
+  }
 }

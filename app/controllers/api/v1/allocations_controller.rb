@@ -7,9 +7,9 @@ class Api::V1::AllocationsController < ApiController
     resource = @workspace.allocations.build(allocation_params)
 
     if resource.save
-      expose resource, serializer: AllocationSerializer
+      expose resource, serializer: AllocationSerializer, metadata: { server_message: "#{@workspace.resources_name} allocated"}
     else
-      creation_error resource.errors
+      creation_error resource.errors, { server_message: "There was a poblem with this allocation"}
     end
   end
 

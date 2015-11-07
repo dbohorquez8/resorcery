@@ -13,7 +13,7 @@ var EasyForm = (function(){
 
   function disableFormAndPage(){
     $form.find("input[type=submit]").attr("disabled", true);
-    $form.parents("body").find("div.overlay").show();
+    $form.parents("body").find("div.overlay").fadeIn();
   }
 
   function enableFormAndPage(){
@@ -24,6 +24,7 @@ var EasyForm = (function(){
   function success(data, textStatus, jqXHR){
     $successCallback(data);
     $form.trigger("submit-finished", ["success", data]);
+    $.notify(data.server_message, "success", { globalPosition:"bottom center" });
   }
 
   function failure(data, textStatus, jqXHR){
@@ -31,10 +32,11 @@ var EasyForm = (function(){
     $failureCallback(data);
     addErrorsToElements(data);
     $form.trigger("submit-finished", ["error", data]);
+    $.notify(data.server_message, "error", { globalPosition:"bottom center" });
   }
 
   function addErrorsToElements(data){
-    var errors = data.error.messages;
+    var errors = data.response.messages;
     if(typeof errors == "undefined") return true;
     $.each( Object.keys(errors) , function(i, elem){
       $formObject.find("[data-name=" + elem + "]").addClass("errored");
@@ -62,9 +64,9 @@ var EasyForm = (function(){
       });
     });
 
-    $form.on("submit-finished", function(evt, status, data){
-      console.log("finished submitting the form")
-    });
+    // $form.on("submit-finished", function(evt, status, data){
+    //   console.log("finished submitting the form")
+    // });
   }
 
   return {

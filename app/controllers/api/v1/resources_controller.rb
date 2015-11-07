@@ -7,9 +7,9 @@ class Api::V1::ResourcesController < ApiController
     resource = @workspace.resources.build(resource_params)
 
     if resource.save
-      expose resource, serializer: ResourceSerializer
+      expose resource, serializer: ResourceSerializer, metadata:{ server_message: "#{@workspace.resources_name} created!"}
     else
-      creation_error resource.errors
+      creation_error resource.errors, { server_message: "There was a problem creating the #{@workspace.resources_name}."}
     end
   end
 
