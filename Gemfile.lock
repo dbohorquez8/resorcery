@@ -232,6 +232,7 @@ DEPENDENCIES
   active_model_serializers (~> 0.9.3)
   bazaar (= 0.0.2)
   color-generator (= 0.0.4)
+  d3-rails
   date_validator (~> 0.8.1)
   devise
   factory_girl_rails (~> 4.0)
