@@ -7,7 +7,6 @@ module WorkspaceFinder
   end
 
   def load_workspace
-    @workspace = current_user.workspaces.from_unique_id(params[:wid])
+    @workspace = current_user.workspaces.from_unique_id(params[:wid]).first!
   end
-
 end

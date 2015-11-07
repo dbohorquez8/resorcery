@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   api version: 1, module: "api/v1" do
     resources :workspaces, :only => [:create, :index]
 
-    scope '(/w/:wid)', constraints: { wid: /[^\/]+/} do
+    scope '/w/:wid', constraints: { wid: /[^\/]+/} do
       resources :resources, :only => [:create]
       resources :resource_groups, :only => [:create]
       resources :allocations, :only => [:create]

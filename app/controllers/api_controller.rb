@@ -2,6 +2,7 @@
 # for the time being it will be private
 class ApiController < RocketPants::Base
   include Devise::Controllers::Helpers
+  include ManageCreationErrors
 
   before_filter :authenticate_user!
 
