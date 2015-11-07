@@ -16,6 +16,13 @@ RSpec.describe ResourceGroup, type: :model do
       expect(resource_group.errors.include?(:name)).to be_truthy
     end
 
+    it "should allow same name in different workspaces" do
+      create(:resource_group, name: "name 1", workspace_id: 1)
+      expect{
+        create(:resource_group, name: "name 1", workspace_id: 2)
+      }.not_to raise_error(ActiveRecord::RecordInvalid)
+    end
+
   end
 
   describe "Associations" do
