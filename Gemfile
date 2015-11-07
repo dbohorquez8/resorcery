@@ -9,14 +9,16 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'd3-rails'
 
-gem 'active_model_serializers'
-gem 'date_validator'
-gem 'figaro'
-gem 'hashids'
+gem 'active_model_serializers', '~> 0.9.3'
+gem 'date_validator', '~> 0.8.1'
+gem 'figaro', '~> 1.1.1'
+gem 'hashids', '~> 1.0.2'
+gem 'rocket_pants', '~> 1.0'
+gem 'kaminari', '~> 0.16.3'
 
 # random name generator
-gem 'bazaar'
-gem "color-generator"
+gem 'bazaar', '0.0.2'
+gem "color-generator", '0.0.4'
 
 group :development, :test do
   gem "factory_girl_rails", "~> 4.0"
