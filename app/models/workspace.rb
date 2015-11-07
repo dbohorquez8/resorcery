@@ -2,8 +2,12 @@ class Workspace < ActiveRecord::Base
   DEFAULT_RESOURCES_NAME = "resource".freeze
   DEFAULT_RESOURCE_GROUPS_NAME = "group".freeze
 
-  before_create :init_resource_name_and_group_name
-  before_create :init_name_generator
+  validates :name, presence: true
+
+  has_many :resource_groups, foreign_key: :workspace_id, inverse_of: :worskpace
+
+  before_validation :init_resource_name_and_group_name
+  before_validation :init_name_generator
 
   private
   # this method sets the default resource name and resource group name for a worskpace.

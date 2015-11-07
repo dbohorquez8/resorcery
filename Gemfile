@@ -9,8 +9,10 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 
 gem 'active_model_serializers'
+
 # random name generator
 gem 'bazaar'
+gem "color-generator"
 
 group :development, :test do
   gem "factory_girl_rails", "~> 4.0"

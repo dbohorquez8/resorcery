@@ -11,7 +11,10 @@ class WorkspacesController < ApplicationController
   end
 
   def show
-    render json: @workspace, serializer: WorkspaceSerializer
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @workspace, serializer: WorkspaceSerializer }
+    end
   end
 
   def create

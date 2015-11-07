@@ -2,6 +2,14 @@ require 'rails_helper'
 
 RSpec.describe Workspace ,type: :model do
   describe "Validations" do
+    it "should validate name" do
+      allow_any_instance_of(Workspace).to receive(:init_name_generator).and_return(true)
+      expect(build(:workspace, name: '').valid?).to be_falsy
+    end
+  end
+
+  describe "Associations" do
+    it { should have_many(:resource_groups).class_name('ResourceGroup').with_foreign_key("workspace_id") }
   end
 
   describe "before_create" do

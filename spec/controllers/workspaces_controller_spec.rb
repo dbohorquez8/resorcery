@@ -17,7 +17,7 @@ RSpec.describe WorkspacesController, type: :controller do
 
     context 'OK' do
       let(:workspace) { create :workspace }
-      let(:perform) { get :show, id: workspace.id }
+      let(:perform) { get :show, id: workspace.id, format: :json }
 
       it { should be_successful }
       it { expect(assigns(:workspace)).to eq(workspace) }
@@ -34,7 +34,7 @@ RSpec.describe WorkspacesController, type: :controller do
     end
 
     context 'not found' do
-      let(:perform) { get :show, id: 'bah'}
+      let(:perform) { get :show, id: 'bah', format: :json }
 
       it { should be_not_found }
       it { subject.body.should be_empty }
