@@ -15,6 +15,6 @@ class Api::V1::ResourcesController < ApiController
 
   private
     def resource_params
-      params.require(:resource).permit(:name, metadata: [])
+      params.require(:resource).permit(:name, tag_list: [], metadata: [])
     end
 end

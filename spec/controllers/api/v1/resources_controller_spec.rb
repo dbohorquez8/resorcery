@@ -37,8 +37,10 @@ RSpec.describe Api::V1::ResourcesController, "Actions", type: :controller, test_
       end
 
       it "should return the newly created resource" do
-        post :create, api_params(wid: workspace.unique_id, resource: {name: "something"})
-        expect(json_response(response.body)[:id]).to eq(Resource.last.id)
+        post :create, api_params(wid: workspace.unique_id, resource: {name: "something", tag_list: ["test"]})
+        parsed_body = json_response(response.body)
+        expect(parsed_body[:id]).to eq(Resource.last.id)
+        expect(parsed_body[:tag_list]).to eq(["test"])
       end
 
       it "should return the errors if the resources can not be created" do

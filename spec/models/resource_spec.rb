@@ -29,4 +29,11 @@ RSpec.describe Resource, type: :model do
     it { should belong_to(:workspace) }
     it { should have_many(:allocations).inverse_of(:resource) }
   end
+
+  describe "tag_list" do
+    it "has items" do
+      resource = create :resource, :with_tag
+      expect(resource.tag_list.length).to eq(1)
+    end
+  end
 end

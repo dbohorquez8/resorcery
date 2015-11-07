@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem 'd3-rails'
 
 gem 'active_model_serializers', '~> 0.9.3'
+gem 'acts-as-taggable-on', '~> 3.5'
 gem 'date_validator', '~> 0.8.1'
 gem 'figaro', '~> 1.1.1'
 gem 'hashids', '~> 1.0.2'
