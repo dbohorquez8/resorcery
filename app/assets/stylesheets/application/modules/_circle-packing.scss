@@ -15,7 +15,7 @@
 
   &--leaf {
     fill: white;
-    stroke-width: 0;
+    stroke-width: 3px;
   }
 
   &--root {
@@ -34,4 +34,8 @@
 .circle-packing__node--root,
 .circle-packing__node--leaf {
   pointer-events: none;
+}
+
+.circle-packing__image {
+  display: block;
 }

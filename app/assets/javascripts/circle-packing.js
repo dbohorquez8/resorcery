@@ -26,25 +26,26 @@ $(function (){
     var focus = root,
         nodes = pack.nodes(root),
         view;
+
     var circle = svg.selectAll("circle")
         .data(nodes)
       .enter().append("circle")
         .attr("class", function(d) { return d.parent ? d.children ? "circle-packing__node" : "circle-packing__node circle-packing__node--leaf" : "circle-packing__node circle-packing__node--root"; })
+        .attr("style", function(d){
+          return d.color ? "stroke:" + d.color : '';
+        })
         .on("click", function(d) { if (focus !== d) zoom(d), d3.event.stopPropagation(); });
 
     var text = svg.selectAll("text")
         .data(nodes)
       .enter().append("text")
         .attr("class", "circle-packing__label")
-        .style("fill-opacity", function(d) { return d.parent === root ? 1 : 0; })
-        .style("display", function(d) { return d.parent === root ? null : "none"; })
-        .text(function(d) { return d.name; });
+        .text(function(d) { return d.name.replace(' ', '<br>'); });
 
     var node = svg.selectAll("circle,text");
 
     d3.select(".js-workspace-chart")
-        .style("background", color(-1))
-        .on("click", function() { zoom(root); });
+      .on("click", function() { zoom(root); });
 
     zoomTo([root.x, root.y, root.r * 2 + margin]);
 
