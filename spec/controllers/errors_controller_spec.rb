@@ -5,21 +5,21 @@ RSpec.describe ErrorsController, type: :controller do
   describe "GET #not_found" do
     it "returns http success" do
       get :not_found
-      expect(response).to have_http_status(:success)
+      expect(response.code).to eq("404")
     end
   end
 
   describe "GET #internal_error" do
     it "returns http success" do
       get :internal_error
-      expect(response).to have_http_status(:success)
+      expect(response.code).to eq("500")
     end
   end
 
   describe "GET #unacceptable" do
     it "returns http success" do
       get :unacceptable
-      expect(response).to have_http_status(:success)
+      expect(response.code).to eq("422")
     end
   end
 
