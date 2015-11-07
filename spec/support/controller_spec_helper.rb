@@ -13,6 +13,10 @@ module ControllerSpecHelper
     def json_response(data)
       JSON.parse(data).with_indifferent_access[:response]
     end
+
+    def json_pagination(data)
+      JSON.parse(data).with_indifferent_access[:pagination]
+    end
   end
 end
 

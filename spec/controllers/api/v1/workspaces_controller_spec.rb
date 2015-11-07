@@ -43,6 +43,13 @@ RSpec.describe Api::V1::WorkspacesController, "Actions", type: :controller, test
       it { expect be_success }
       it { expect be_collection_resource }
     end
+
+    describe "sending params" do
+      it "returns the list of paginated workspaces" do
+        get :index, api_params
+        expect(json_pagination(response.body)).not_to be_empty
+      end
+    end
   end
 
 end
