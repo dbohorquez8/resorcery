@@ -1,4 +1,5 @@
 class Resource < ActiveRecord::Base
+  include Colorizable
   acts_as_taggable
 
   validates :workspace_id, presence: true

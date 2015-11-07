@@ -1,4 +1,6 @@
 class Allocation < ActiveRecord::Base
+  include Colorizable
+
   validates :workspace_id, presence: true
   validates :resource_id, presence: true
   validates :resource_group_id, presence: true

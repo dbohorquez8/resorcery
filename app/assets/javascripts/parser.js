@@ -13,6 +13,7 @@ $(function(){
 
           return {
             name: resource.name,
+            color: allocation.metadata.background_color,
             size: 1
           }
         })

@@ -1,4 +1,6 @@
 class Workspace < ActiveRecord::Base
+  include Colorizable
+
   DEFAULT_RESOURCES_NAME = "resource".freeze
   DEFAULT_RESOURCE_GROUPS_NAME = "group".freeze
 
