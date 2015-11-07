@@ -4,8 +4,13 @@ class Api::V1::AllocationsController < ApiController
   version 1
 
   def create
-    resource = @workspace.allocations.create(allocation_params)
-    expose resource, serializer: AllocationSerializer
+    resource = @workspace.allocations.build(allocation_params)
+
+    if resource.save
+      expose resource, serializer: AllocationSerializer
+    else
+      creation_error resource.errors
+    end
   end
 
   private
