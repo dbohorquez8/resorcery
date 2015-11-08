@@ -47,6 +47,8 @@ $(function (){
     });
 
     allocationPopup.open($('<div>').append(content));
+    $('.js-allocation-form .js-resource-group-id option[value=' + allocation.resourceGroupId + ']').attr("selected", "selected");
+
     $('.js-allocation-form').on('submit-finished', function (evt, status, data) {
       if (status == "success") allocationPopup.close();
     });
