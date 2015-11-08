@@ -16,9 +16,10 @@ $(function (){
         return resourceGroup.append(ich["js-resource-template"](resource));
       });
 
-      $('.js-workspace-chart').append(resourceGroup);
-    });
-  }
+    function drawGroups() {
+      var resourceSize = 50,
+      margin = 8,
+      radius;
 
   function drawGroups() {
     var resourceSize = 50,
@@ -27,6 +28,9 @@ $(function (){
 
       $('.js-workspace-chart-group').each(function (){
         var ringIndex = 1, maxResources = $(this).find('.js-workspace-chart-resource').length + 1;
+
+        $(this).find('.js-group-title').css('top', 0 - (resourceSize + 10) / 2)
+          .css('left', 0 - (resourceSize + 10) / 2);
 
         $(this).find('.js-workspace-chart-resource').each(function (index){
           var index = index + 1;

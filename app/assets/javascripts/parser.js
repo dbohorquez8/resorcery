@@ -8,7 +8,7 @@ $(function(){
     parsed_data.children = _.map(workspace.resource_groups, function(resource_group){
       var child = {};
       child.name = resource_group.name;
-      child.bg_color = resource_group.metadata.background_color;
+      child.bg_color = "#" + resource_group.metadata.background_color;
       child.size = 1;
 
       var allocations = _.filter(workspace.allocations, {
