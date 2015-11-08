@@ -54,8 +54,16 @@ Allocator = (function(){
     // when click on use this, it will modify dates in the date
     $(".js-availability-list").on('click', ".js-availability-use-this", function(){
 
-      NewAllocationForm.startDatePicker().setMoment( parseDate($(this).data("start-date")) );
-      NewAllocationForm.endDatePicker().setMoment( parseDate($(this).data("end-date")) );
+      var startDate = $(this).data("start-date");
+      var endDate = $(this).data("end-date");
+      // if the endDate its anytime we will not add 3 days to the current date
+      // but to the start_date
+      if(endDate == "anytime"){
+        endDate = moment($(this).data("start-date"), "YYYY-MM-DD").add(5, 'days')
+      }
+
+      NewAllocationForm.startDatePicker().setMoment( parseDate(startDate) );
+      NewAllocationForm.endDatePicker().setMoment( parseDate(endDate) );
     });
 
     $('.js-new-allocation-form').on("submit-finished", function(evt, status, data){
