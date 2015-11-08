@@ -32,18 +32,7 @@ var NewResourceGroupForm = (function(){
 
   // define handlers for submit button.
   function successCallback(something){
-    // BEGINING - update scheduled messages glance
-    // API.post({
-    //   url:             '/update/scheduled_messages',
-    //   data:            {},
-    //   headers:         { 'x-acpt': signedRequest },
-    //   successCallback: function(something){
-    //     console.log(something);
-    //   },
-    //   failureCallback: function(something){
-    //     console.log(something);
-    //   }
-    // });
+    Resorcery.render();
   }
 
   function failureCallback(something){
