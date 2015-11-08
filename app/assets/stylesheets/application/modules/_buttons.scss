@@ -28,6 +28,9 @@
 .button--danger {
   @include button-style($btn-danger-color, $btn-danger-bg, transparent);
 }
+.link--cancel {
+  line-height: 36px;
+}
 
 .button-border{
   border: 1px solid;

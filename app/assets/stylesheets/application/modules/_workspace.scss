@@ -125,6 +125,16 @@
   margin: 5px;
 }
 
+.workspace-chart__resource {
+  cursor: pointer;
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
 .workspace-chart-group__title {
   background: none;
   border: 0 none;
