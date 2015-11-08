@@ -2,7 +2,7 @@ $(function(){
   Resorcery.parser = function (data) {
     var parsed_data = {}, workspace = data.response;
 
-    parsed_data.name = "";//workspace.name;
+    parsed_data.name = workspace.name;
     parsed_data.bg_color = workspace.metadata.background_color;
 
     parsed_data.children = _.map(workspace.resource_groups, function(resource_group){
@@ -29,9 +29,6 @@ $(function(){
       return child;
     });
 
-
-
-    console.log(parsed_data);
     return parsed_data;
   };
 });
