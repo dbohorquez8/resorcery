@@ -11,7 +11,7 @@ Allocator = (function(){
     if(date == "anytime"){
       return moment().add(5, 'days').format();
     }else{
-      return date;
+      return moment(date, "YYYY-MM-DD");
     }
   }
 
@@ -55,8 +55,8 @@ Allocator = (function(){
     // when click on use this, it will modify dates in the date
     $(".js-availability-list").on('click', ".js-availability-use-this", function(){
 
-      NewAllocationForm.startDatePicker().setDate( parseDate($(this).data("start-date")) );
-      NewAllocationForm.endDatePicker().setDate( parseDate($(this).data("end-date")) );
+      NewAllocationForm.startDatePicker().setMoment( parseDate($(this).data("start-date")) );
+      NewAllocationForm.endDatePicker().setMoment( parseDate($(this).data("end-date")) );
     });
 
     $('.js-new-allocation-form').on("submit-finished", function(evt, status, data){
