@@ -94,6 +94,7 @@
 
   <script type="text/javascript" charset="utf-8">
     Resorcery.workspaceId = <%= @workspace.unique_id.to_json.html_safe %>;
+    Resorcery.defaultDates = <%= default_dates.to_json.html_safe %>;
     NewResourceGroupForm.init(".js-new-resource-group-form");
     NewResourceForm.init(".js-new-resource-form", ".js-resources-list");
   </script>

@@ -13,7 +13,7 @@ $(function (){
 
   });
 
-  DateRangeSlider.init("#js-workspace-date-slider", {from: 3, to: 7});
+  Resorcery.DateRangeSlider = (DateRangeSlider.init("#js-workspace-date-slider", {from: 3, to: 7}, Resorcery.defaultDates)).data('ionRangeSlider');
   Resorcery.refresh();
 
   Allocator.init('.js-open-allocate-form', ich['js-new-allocation-form-template']);

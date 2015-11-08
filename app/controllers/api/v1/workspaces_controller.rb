@@ -16,7 +16,7 @@ class Api::V1::WorkspacesController < ApiController
   def show
     workspace = current_user.workspaces.from_unique_id(workspace_id).includes(:resources, :resource_groups).first!
     serialized = WorkspaceSerializer.new(workspace).serializable_hash
-    serialized[:allocations] = ActiveModel::ArraySerializer.new(workspace.allocations.in_range(@start_date, @end_date), each_serializer: AllocationSerializer).serializable_array
+    serialized[:allocations] = ActiveModel::ArraySerializer.new(workspace.allocations.overlapping(@start_date, @end_date), each_serializer: AllocationSerializer).serializable_array
     expose serialized, metadata: calculate_statistics(serialized)
   end
 

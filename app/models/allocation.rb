@@ -20,9 +20,8 @@ class Allocation < ActiveRecord::Base
   scope :for_workspace,      -> (workspace) { where(workspace_id: workspace) }
   scope :for_resource,       -> (resource) { where(resource_id: resource) }
   scope :for_resource_group, -> (resource_group) { where(resource_group_id: resource_group) }
-  scope :in_range, -> (start_date, end_date) { where("start_date >= :start_date AND end_date <= :end_date", start_date: start_date, end_date: end_date) }
   scope :overlapping, -> (start_date, end_date) {
-    where("start_date < :end_date AND :start_date < end_date", start_date: start_date, end_date: end_date )
+    where("start_date <= :end_date AND :start_date <= end_date", start_date: start_date, end_date: end_date )
   }
 
   private
