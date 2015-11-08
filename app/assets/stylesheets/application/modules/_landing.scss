@@ -1,7 +1,9 @@
 .landing__main-banner {
   background: #746AC4 url(/assets/main-banner.jpg) no-repeat center;
   background-size: cover;
+  color: white;
   padding: 4em 0;
+  text-align: center;
 }
 
 .main-banner__heading {
@@ -14,5 +16,47 @@
 .main-banner__subheading {
   color: #EEE;
   font-size: 32px;
-  margin-bottom: 1em;
+  margin-bottom: 2em;
+}
+
+.main-banner__buttons {
+  margin-bottom: 30px;
+}
+
+.main-banner__links {
+  a {
+    color: white;
+    display: inline-block;
+    margin: 0 5px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  span {
+    font-size: 2em;
+    margin: 0 5px;
+    vertical-align: middle;
+  }
+}
+
+.landing__screenshot {
+  max-width: 100%;
+}
+
+.landing__section {
+  font-size: 18px;
+}
+
+.landing__section--highlight {
+  background: #746AC4;
+
+  .landing__heading {
+    color: white;
+  }
+}
+
+.landing__heading {
+  margin-bottom: 1.5em;
 }

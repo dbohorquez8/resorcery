@@ -15,6 +15,15 @@
         | Resorcery&nbsp;
       | is a flexible multi-purpose tool to assign and visualize resource allocations
 
-    .text--center
-      = link_to new_user_session_path, class: "button button-border--white button--large"
+    .main-banner__buttons
+      = link_to new_user_registration_path, class: "button button-border--white button--large"
         | Sign Up for Free
+
+    .main-banner__links
+      = link_to demo_path, class: ""
+        | Try a Demo
+
+      span •
+
+      = link_to new_user_session_path, class: ""
+        | I already have an account

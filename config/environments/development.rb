@@ -40,4 +40,7 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  # Indent html for pretty debugging and do not sort attributes
+  Slim::Engine.set_options pretty: true, sort_attrs: false
 end

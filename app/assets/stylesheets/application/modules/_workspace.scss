@@ -138,9 +138,11 @@
   background: $sidebar-bg;
   border-radius: 35px 35px 0 0;
   bottom: 0;
-  left: 310px;
-  right: 310px;
+  left: 0;
+  right: 0;
   margin: auto;
   padding: 20px 15px 5px;
   position: absolute;
+  max-width: 660px;
+  width: 100%;
 }

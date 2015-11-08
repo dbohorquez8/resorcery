@@ -1,56 +1,42 @@
 .landing__main-banner
   = render partial: "pages/landing/main_banner"
 
-.section.soft--ends
-  .container
-    h2.alpha.text--center
+section.soft--ends.landing__section
+  .container.container--small
+    h1.alpha.text--center.landing__heading
       | Easy. Flexible.&nbsp;
       strong Free.
 
+    .grid.push--bottom
+      .grid__item.large--one-half.one-whole
+        p.push--top Distribute resources across projects, teams, tables, you name it:
+
+        ul
+          li Developers in your projects
+          li Football players in upcoming matches
+          li Guests on tables in your wedding
+          li Speakers in conference rooms at your event
+      .grid__item.large--one-half.one-whole
+        = image_tag "demo-dashboard.png", alt: "Resorcery's Dashboard", class: 'landing__screenshot'
+
     .grid
       .grid__item.large--one-half.one-whole
-        .panel
-          .panel__body
-            section.feature-box__item-content.text--center
-              .feature-box__logo
-                = image_tag "logo_slack.png", alt: 'slack', class: "slack-button__img"
-
-              span.feature-box__text
-                | If you are using Slack as your communication platform, please sign up using the link below.
+        = image_tag "demo-workspace.png", alt: "An example Workspace", class: 'landing__screenshot'
       .grid__item.large--one-half.one-whole
-        .panel
-          .panel__body
-            section.feature-box__item-content.text--center
-              .feature-box__logo
-                = image_tag "logo_hipchat.png", alt: 'hipchat', class: "hipchat-button__img"
+        p.push--top Easily assign and visualize your resource allocations:
 
-              span.feature-box__text
-                | If you are using Hipchat as your communication platform, please sign up using the link below.
-              
-              .feature-box__advice
-                = render "shared/find_out_more", link_class: "text-color--white"
-/*
-  section.guide-view.soft--sides.text-color--white.relative
-    .wrapper
-      .artile.guide-view__text.weight--light
-        = t('views.convergely.guide-view')
-        span.guide-view__link.weight--semibold
-          = t('views.convergely.guide-view_link')
-      .guide-view__arrow.float--right
+        ul
+          li Create and allocate new resources on the fly
+          li Visually compare allocations among groups
+          li View group resources through time
+          li Choose specific date ranges
 
-  .stuff.text--center.grid__item.one-whole
-    .wrapper
-      article.stuff--title1.weight--light
-        = t('views.convergely.stuff-title')
-        span.stuff--title2.weight--semibold
-          = t('views.convergely.stuff-title2')
-      = render "pages/landing/cool_stuff"
-
-  .wrapper
-    article.comment-below.text--center.weight--light
-      = t('views.convergely.comment-below')
-      a.weight--semibold(href="mailto:#{t('views.convergely.comment-below-mail')}")
-        = t('views.convergely.comment-below-mail')
+section.soft--ends.landing__section.landing__section--highlight
+  .container.container--small
+    h1.alpha.text--center.landing__heading
+      | Watch it in action!
+    = link_to demo_path, class: "button button-border--white button--large"
+      | Try the Demo
 
 - content_for :javascript do
   = javascript_include_tag "landing/animate-headlines"

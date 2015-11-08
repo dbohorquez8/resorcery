@@ -26,6 +26,10 @@
 	@extend %one-half;
 }
 
+.large--one-half{
+  @extend %large--one-half;
+}
+
 .one-quarter{
   @extend %one-quarter;
 }
