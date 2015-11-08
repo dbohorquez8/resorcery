@@ -46,7 +46,7 @@ $(function (){
         var angle = 360 / delta;
 
         if(index == maxResourcesPerRingIndex(ringIndex)){
-          ringIndex++;           
+          ringIndex++;
         }
 
         var x = 0 - resourceSize / 2 - radius * Math.sin(angle * index * Math.PI / 180);
