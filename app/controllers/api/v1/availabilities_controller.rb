@@ -6,7 +6,17 @@ class Api::V1::AvailabilitiesController < ApiController
   # returns the availability of a given resource
   def show
     resource = @workspace.resources.find(params[:id])
-    availability = resource.fetch_availability(start_date: Date.current)
+    availability = resource.fetch_availability(start_date: start_date)
     expose availability, metadata:{ server_message: "Availability fetched for #{resource.name.capitalize}"}
+  end
+
+  def start_date
+    begin
+      date = params[:start_date].present? ? Date.parse(params[:start_date]) : Date.current
+      date = Date.current if date < Date.current
+    rescue Exception => e
+      Date.current
+    end
+
   end
 end

@@ -9,7 +9,7 @@ Allocator = (function(){
 
   function parseDate(date){
     if(date == "anytime"){
-      return moment().add(5, 'days').format();
+      return moment().add(5, 'days');
     }else{
       return moment(date, "YYYY-MM-DD");
     }
@@ -40,7 +40,7 @@ Allocator = (function(){
     popup.open(content);
 
     API.get({
-      url: '/1/w/' + Resorcery.workspaceId + '/availabilities/' + data.resourceId,
+      url: '/1/w/' + Resorcery.workspaceId + '/availabilities/' + data.resourceId + '?start_date='+ Resorcery.getDateParams().start_date,
       successCallback: function(something){
         console.log(something);
         $(".js-availability-list").html(ich['js-availability-list-template'](something));
