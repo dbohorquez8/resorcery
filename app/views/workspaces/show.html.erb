@@ -3,49 +3,51 @@
     <div class="js-workspace-chart"></div>
   </div>
 
-  <div class="resources-container">
-    <button class="orb orb--resources workspace__orb--left js-toggle-sidebar" data-target=".js-resources-sidebar">
-      <span class="workspace-orb__label">
-        <i class="icon icon--pawn"></i>
-      </span>
-      <span class="workspace-orb__label--alt">Close</span>
-    </button>
+  <% if user_signed_in? && @workspace.user == current_user %>
+    <div class="resources-container">
+      <button class="orb orb--resources workspace__orb--left js-toggle-sidebar" data-target=".js-resources-sidebar">
+        <span class="workspace-orb__label">
+          <i class="icon icon--pawn"></i>
+        </span>
+        <span class="workspace-orb__label--alt">Close</span>
+      </button>
 
-    <section class="resources sidebar workspace__sidebar--left js-resources-sidebar">
-      <h1 class="resources__title">Resources</h1>
-      <ul class="resources__list js-resources-list">
-        <%- @workspace.resources.each do |resource| %>
-          <li> <span> <%= resource.name %> (<a href="javascript:;" class="js-open-allocate-form" data-resource-name="<%= resource.name %>" data-resource-id="<%= resource.id %>">allocate</a>)</span> </li>
-        <%- end %>
-      </ul>
+      <section class="resources sidebar workspace__sidebar--left js-resources-sidebar">
+        <h1 class="resources__title">Resources</h1>
+        <ul class="resources__list js-resources-list">
+          <%- @workspace.resources.each do |resource| %>
+            <li> <span> <%= resource.name %> (<a href="javascript:;" class="js-open-allocate-form" data-resource-name="<%= resource.name %>" data-resource-id="<%= resource.id %>">allocate</a>)</span> </li>
+          <%- end %>
+        </ul>
 
-      <form class="js-new-resource-form" action="<%= resources_path(version:1, wid: @workspace.unique_id)%>" data-method="post" >
-        <div class="form-inline">
-          <input type="text" autocomplete="off" class="form-control form-control--clear input--large js-group-input-name js-name" placeholder="<%= @workspace.resources_name %> Name" name="resource[name]" data-name="name">
-          <input type="submit" class="button button--info button--large float--right js-submit" value="New">
-        </div>
-      </form>
+        <form class="js-new-resource-form" action="<%= resources_path(version:1, wid: @workspace.unique_id)%>" data-method="post" >
+          <div class="form-inline">
+            <input type="text" autocomplete="off" class="form-control form-control--clear input--large js-group-input-name js-name" placeholder="<%= @workspace.resources_name %> Name" name="resource[name]" data-name="name">
+            <input type="submit" class="button button--info button--large float--right js-submit" value="New">
+          </div>
+        </form>
 
-    </section>
-  </div>
-
-  <div class="groups-container">
-    <button class="orb orb--groups workspace__orb--right js-toggle-sidebar" data-target=".js-groups-sidebar">
-      <span class="workspace-orb__label">
-        <i class="icon icon--group"></i>
-      </span>
-      <span class="workspace-orb__label--alt">Close</span>
-    </button>
-
-    <div class="groups sidebar workspace__sidebar--right js-groups-sidebar">
-      <form class="js-new-resource-group-form" action="<%= resource_groups_path(version:1, wid: @workspace.unique_id)%>" data-method="post" >
-        <div class="form-inline">
-          <input type="text" autocomplete="off" class="form-control form-control--clear input--large js-group-input-name js-name" placeholder="<%= @workspace.resource_groups_name %> Name" name="resource_group[name]" data-name="name">
-          <input type="submit" class="button button--info button--large float--right js-submit" value="OK">
-        </div>
-      </form>
+      </section>
     </div>
-  </div>
+
+    <div class="groups-container">
+      <button class="orb orb--groups workspace__orb--right js-toggle-sidebar" data-target=".js-groups-sidebar">
+        <span class="workspace-orb__label">
+          <i class="icon icon--group"></i>
+        </span>
+        <span class="workspace-orb__label--alt">Close</span>
+      </button>
+
+      <div class="groups sidebar workspace__sidebar--right js-groups-sidebar">
+        <form class="js-new-resource-group-form" action="<%= resource_groups_path(version:1, wid: @workspace.unique_id)%>" data-method="post" >
+          <div class="form-inline">
+            <input type="text" autocomplete="off" class="form-control form-control--clear input--large js-group-input-name js-name" placeholder="<%= @workspace.resource_groups_name %> Name" name="resource_group[name]" data-name="name">
+            <input type="submit" class="button button--info button--large float--right js-submit" value="OK">
+          </div>
+        </form>
+      </div>
+    </div>
+  <% end %>
 
   <div class="workspace__slider">
     <input type="text" id="js-workspace-date-slider" />
