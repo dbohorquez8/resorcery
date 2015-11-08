@@ -19,7 +19,7 @@ section.soft--ends.landing__section
       .grid__item.large--one-half.one-whole
         = image_tag "demo-dashboard.png", alt: "Resorcery's Dashboard", class: 'landing__screenshot'
 
-    .grid
+    .grid.push--bottom
       .grid__item.large--one-half.one-whole
         = image_tag "demo-workspace.png", alt: "An example Workspace", class: 'landing__screenshot'
       .grid__item.large--one-half.one-whole
@@ -31,12 +31,13 @@ section.soft--ends.landing__section
           li View group resources through time
           li Choose specific date ranges
 
-section.soft--ends.landing__section.landing__section--highlight
+section.landing__section.landing__section--highlight
   .container.container--small
-    h1.alpha.text--center.landing__heading
+    h1.alpha.landing__heading
       | Watch it in action!
-    = link_to demo_path, class: "button button-border--white button--large"
-      | Try the Demo
+    p
+      = link_to demo_path, class: "button button-border--white button--large"
+        | Try the Demo
 
 - content_for :javascript do
   = javascript_include_tag "landing/animate-headlines"

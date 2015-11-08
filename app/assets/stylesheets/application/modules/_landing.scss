@@ -55,6 +55,18 @@
   .landing__heading {
     color: white;
   }
+
+  & > .container {
+    padding-bottom: 50px;
+    padding-top: 50px;
+    text-align: center;
+
+    @include grid-media-query('medium'){
+      background: url(/assets/illustration.png) no-repeat 100% 20px;
+      background-size: 462px 256px;
+      text-align: left;
+    }
+  }
 }
 
 .landing__heading {
