@@ -10,11 +10,11 @@ $(function (){
 
     $('.js-workspace-chart-group').each(function (){
       var ringIndex = 1, maxResources = $(this).find('.js-workspace-chart-resource').length;
-        
+
       $(this).find('.js-workspace-chart-resource').each(function (index){
         var resource = $(this);
         var delta = maxResourcesPerRingIndex(ringIndex) > maxResources - 1 ? (maxResources - 1) - maxResourcesPerRingIndex(ringIndex - 1) : 6 * ringIndex;
-        
+
         if(index == 0){
           resource.css('top', 0 - resourceSize / 2)
             .css('left', 0 - resourceSize / 2);
@@ -33,7 +33,7 @@ $(function (){
         resource.css('top', y)
           .css('left', x);
       });
-        
+
         var size = 2 * radius + resourceSize;
         $(this).width(size);
         $(this).height(size);
