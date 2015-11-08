@@ -17,7 +17,7 @@ class Resource < ActiveRecord::Base
   PREFERRED_HUMAN_DATE_FORMAT = "%b %d, %Y"
   def fetch_availability(options = {})
     start_date = options.with_indifferent_access[:start_date] || Date.current
-    current_allocations = allocations.where("start_date >= :start_date", start_date: start_date).order(:start_date)
+    current_allocations = allocations.where("start_date >= :start_date OR end_date >= :start_date", start_date: start_date).order(:start_date)
 
     results = []
     date = start_date

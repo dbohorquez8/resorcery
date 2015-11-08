@@ -79,6 +79,36 @@ RSpec.describe Resource, type: :model do
           expect(result[:end_date]).to eq("anytime")
         end
       end
+
+      # [allocation] - - - - - -
+      context 'the allocation ends today' do
+        it "should not consider the current date as a viable candidate because it will overlap with the end date of the previous allocation" do
+          allocation = create(:allocation_with_relations, resource: @resource, start_date: Date.current - 4.days, end_date: Date.current)
+          result = @resource.fetch_availability(start_date: Date.current).first
+          expect(result[:start_date]).to eq(format_date(allocation.end_date + 1.days))
+          expect(result[:end_date]).to eq("anytime")
+        end
+      end
+
+      # [allocation] - - - - - -
+      context 'the allocation ends some days after today' do
+        it "should not consider the current date as a viable candidate because it will overlap with the end date of the previous allocation" do
+          allocation = create(:allocation_with_relations, resource: @resource, start_date: Date.current - 4.days, end_date: Date.current + 4.days)
+          result = @resource.fetch_availability(start_date: Date.current).first
+          expect(result[:start_date]).to eq(format_date(allocation.end_date + 1.days))
+          expect(result[:end_date]).to eq("anytime")
+        end
+      end
+
+      context 'the allocation is one day only and tomorrow' do
+        # - [allocation] - - - - - -
+        it "should return a one day range" do
+          allocation = create(:allocation_with_relations, resource: @resource, start_date: Date.current + 1.day, end_date: Date.current + 1.day)
+          result = @resource.fetch_availability(start_date: Date.current).first
+          expect(result[:start_date]).to eq(format_date(Date.current))
+          expect(result[:end_date]).to eq(format_date(Date.current))
+        end
+      end
     end
 
     context 'more than one allocation' do
