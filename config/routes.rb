@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  get '/demo', to: "guests#show"
+
   resource :dashboard, only: [:show]
 
   get '/w/new', to: 'workspaces#new', as: :new_workspace
