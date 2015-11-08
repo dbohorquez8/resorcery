@@ -19,6 +19,7 @@
 //= require ion.rangeSlider
 //= require slider
 //= require popup
+//= require pikaday
 
 //= require parser
 //= require renderer

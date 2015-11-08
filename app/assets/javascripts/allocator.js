@@ -30,17 +30,18 @@ Allocator = (function(){
     var content = $("<div>");
     content.append(popupTemplate(data));
     popup.open(content);
-    NewAllocationForm.init('.js-new-allocation-form', end);
-  }
+    NewAllocationForm.init('.js-new-allocation-form');
 
-  function end() {
-    popup.close();
-    Resorcery.refresh();
+    $('.js-new-allocation-form').on("submit-finished", function(evt, status, data){
+      if(status == "success"){
+        popup.close();
+      }
+    });
+
   }
 
   return {
     init: init,
-    start: start,
-    end: end
+    start: start
   };
 })();

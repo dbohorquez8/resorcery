@@ -54,12 +54,8 @@
 
 <% content_for :javascripts do %>
   <script id="js-new-allocation-form-template" type="text/html">
-    <form class="js-new-allocation-form" action="<%= allocations_path(version:1, wid: @workspace.unique_id)%>" data-method="post" >
+    <form class="js-new-allocation-form clearfix" action="<%= allocations_path(version:1, wid: @workspace.unique_id)%>" data-method="post" >
       <input class="js-resource-id" type="hidden" name="allocation[resource_id]" data-name="resource_id" value="{{resourceId}}">
-
-      <input class="js-start-date" type="hidden" name="allocation[start_date]" data-name="start_date" value="{{startDate}}">
-
-      <input class="js-end-date" type="hidden" name="allocation[ent_date]" data-name="end_date" value="{{endDate}}">
 
       <div class="form-inline">
         <label for="allocation[resource_group_id]" class="col-sm-2 control-label"><%= @workspace.resource_groups_name %></label>
@@ -71,12 +67,19 @@
         </select>
       </div>
 
-      <button type="submit" class="js-submit btn btn-default">OK</button>
+      <div class="form-inline">
+        <label for="allocation[start_date]">From</label>
+        <input class="js-start-date" type="text" name="allocation[start_date]" data-name="start_date" value="{{startDate}}">
+        <label for="allocation[end_date]">To</label>
+        <input class="js-end-date" type="text" name="allocation[ent_date]" data-name="end_date" value="{{endDate}}">
+      </div>
+
+      <button type="submit" class="js-submit button button--info button--large float--right">OK</button>
     </form>
   </script>
 
   <script id="js-resources-list-item-template" type="text/html">
-    <li>{{ name }}</li>
+    <li><span>{{ name }} (<a href="javascript:;" class="js-open-allocate-form" data-resource-name="{{ name }}" data-resource-id="{{id}}">allocate</a>) </span></li>
   </script>
 
   <script id="js-resources-group-template" type="text/html">
