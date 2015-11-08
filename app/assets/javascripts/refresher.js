@@ -3,10 +3,6 @@ $(function (){
     return $.param(Resorcery.getDateParams());
   }
 
-  Resorcery.parseLocationHash = function() {
-
-  }
-
   Resorcery.getDateParams = function() {
     var params = {}
     if (Resorcery.startDate) {
