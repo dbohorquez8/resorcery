@@ -35,12 +35,14 @@ $(function (){
       $(this).find('.js-group-title').css('top', 0 - (resourceSize + 10) / 2)
         .css('left', 0 - (resourceSize + 10) / 2);
 
+      radius = resourceSize / 5;
+
       $(this).find('.js-workspace-chart-resource').each(function (index){
         var index = index + 1;
         var resource = $(this);
         var delta = maxResourcesPerRingIndex(ringIndex) > maxResources - 1 ? (maxResources - 1) - maxResourcesPerRingIndex(ringIndex - 1) : 6 * ringIndex;
 
-        radius = (resourceSize + margin) * (ringIndex);
+        radius = (resourceSize + margin / 4) * (ringIndex);
         var angle = 360 / delta;
 
         if(index == maxResourcesPerRingIndex(ringIndex)){
