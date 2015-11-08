@@ -10,7 +10,7 @@ class Api::V1::WorkspacesController < ApiController
 
   def create
     workspace = current_user.workspaces.create(workspace_params)
-    expose workspace, serializer: WorkspaceSerializer
+    expose workspace, serializer: WorkspaceSerializer, metadata:{ server_message: "Workspace created!"}
   end
 
   def show

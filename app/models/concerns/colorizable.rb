@@ -7,6 +7,6 @@ module Colorizable
 
   def setup_color
     generator = ColorGenerator.new saturation: 0.5, lightness: 0.6
-    self.metadata[:background_color] = generator.create_hex
+    self.metadata['background_color'] = generator.create_hex
   end
 end

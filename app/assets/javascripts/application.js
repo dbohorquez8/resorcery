@@ -30,6 +30,7 @@
 
 //= require api_consumers/new_resource_group
 //= require api_consumers/new_resource
+//= require api_consumers/new_workspace
 
 //= require workspaces
 
