@@ -41,7 +41,6 @@ resource_groups_names = [
 ]
 
 allocations_attributes = [
-  {:resource=>"Jose", :start_date=>"Wed, 01 Apr 2015", :end_date=>"Sat, 01 Aug 2015", :resource_group=>"RailsRumble"},
   {:resource=>"Jose", :start_date=>"Fri, 06 Nov 2015", :end_date=>"Sun, 08 Nov 2015", :resource_group=>"RailsRumble"},
   {:resource=>"Miguel", :start_date=>"Fri, 06 Nov 2015", :end_date=>"Sun, 08 Nov 2015", :resource_group=>"RailsRumble"},
   {:resource=>"Lacide", :start_date=>"Fri, 06 Nov 2015", :end_date=>"Sun, 08 Nov 2015", :resource_group=>"RailsRumble"},
