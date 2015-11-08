@@ -3,6 +3,7 @@
   border-width: $border-width;
   border-color: $border;
   background-color: $background;
+  display: inline-block;
   &:hover,
   &:focus,
   &:active,

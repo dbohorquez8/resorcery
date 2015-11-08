@@ -49,6 +49,7 @@
 @import "application/objects/nav";
 @import "application/objects/media";
 @import "application/objects/vertical-middle";
+@import "application/objects/overlay";
 
 //modules, the real css that you write everyday based on the design
 @import "application/modules/grid";
@@ -67,6 +68,8 @@
 @import "application/modules/sidebar";
 @import "application/modules/orbs";
 @import "application/modules/circle-packing";
+@import "application/modules/dashboard";
+@import "application/modules/panel";
 
 // Helpers
 @import "application/helpers/helpers";

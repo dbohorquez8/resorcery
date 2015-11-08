@@ -1,10 +1,22 @@
-<h1>Dashboard page</h1>
+<div class="container container--wide">
+  <div class="grid">
+    <div class="grid__item one-half">
+      <h1>Workspaces</h1>  
+    </div><!--
+      
+    --><div class="grid__item one-half text--right section__nav"><%= link_to "New Workspace", new_workspace_path, class: "button button--success" %></div>
+  </div>
 
-<ul>
-  <% @workspaces.each do |workspace| %>
-    <li>
-      <%= link_to workspace.name, workspace_path(wid: workspace.unique_id, name: workspace.name.parameterize)%>
-    </li>
-  <% end -%>
-  <li><%= link_to "New Workspace", new_workspace_path %></li>
-</ul>
+  <div class="workspace-list grid">
+    <% @workspaces.each do |workspace| %><div class="grid__item one-quarter">
+      <%= link_to workspace_path(wid: workspace.unique_id, name: workspace.name.parameterize), class: "workspace-list__item panel panel--alt" do %>
+        <span class="panel__head" style="background-color: #<%= workspace.metadata['background_color'] %>">
+          <%= workspace.name %>
+        </span>
+        <span class="panel__body">
+          
+        </span>
+      <% end -%>
+    </div><% end -%>
+  </div>
+</div>

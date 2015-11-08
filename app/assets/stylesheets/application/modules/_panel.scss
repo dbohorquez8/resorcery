@@ -35,9 +35,9 @@ $panel-background-color-default:         #fff !default;
   color: $panel-text-color;
   border-radius: $border-radius-base;
   border: 1px solid transparent;
-  box-shadow: 0 1px 2px rgba(#000, 0.30);
   margin-bottom: $line-height-computed;
   position: relative;
+  display: block;
   & > .table,
   & > .table-responsive{
     margin-bottom: 0;
@@ -54,6 +54,7 @@ $panel-background-color-default:         #fff !default;
 
 .panel__head,
 .panel__footer{
+  display: block;
   padding: $padding-large-vertical $padding-large-horizontal;
 }
 
@@ -81,6 +82,7 @@ $panel-background-color-default:         #fff !default;
 .panel__body{
   @extend .clearfix;
   padding: $half-spacing-unit;
+  display: block;
   @media #{$medium} {
     padding: $padding-large-horizontal;
   }
@@ -154,7 +156,21 @@ $panel-background-color-default:         #fff !default;
 }
 
 .panel--alt{
-  @include panel-variant($brand-ui, $text-color, white);
+  @include panel-variant(transparent, white, $brand-info);
+  transition: transform 0.2s ease;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(1);
+  }
+
+  .panel__head a {
+    font-weight: 600;
+    color: white;    
+  }
   .panel__body{
     background-color: #F8F9FB;
   }

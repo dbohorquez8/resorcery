@@ -12,12 +12,12 @@ function EasyForm() {
 
   function disableFormAndPage(){
     $form.find("input[type=submit]").attr("disabled", true);
-    $form.parents("body").find("div.overlay").fadeIn();
+    $form.parents("body").find(".js-overlay").fadeIn();
   }
 
   function enableFormAndPage(){
     $form.find("input[type=submit]").attr("disabled", false).removeAttr("disabled");
-    $form.parents("body").find("div.overlay").hide();
+    $form.parents("body").find(".js-overlay").hide();
   }
 
   function success(data, textStatus, jqXHR){

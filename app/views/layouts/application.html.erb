@@ -25,26 +25,6 @@
   <%= javascript_include_tag 'application' %>
   <%= yield :javascripts %>
 
-  <div class="overlay" style="display:none"></div>
-  <style type="text/css">
-    .errored {
-      border: 1px solid !important #e8828e;
-    }
-    html, body{
-      min-height: 100%;
-    }
-    body{
-      position: relative;
-    }
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 10;
-      background-color: rgba(255,255,255,0.8); /*dim the background*/
-    }
-  </style>
+  <div class="overlay js-overlay"></div>
 </body>
 </html>
