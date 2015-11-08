@@ -16,8 +16,6 @@ $(function(){
         resource_group_id: resource_group.id
       });
 
-      child.name = resource_group.name + " " + allocations.length;
-
       child.children = _.map(allocations, function(alloca){
         var resource = _.filter(workspace.resources, {id: alloca.resource_id})[0];
         return {
