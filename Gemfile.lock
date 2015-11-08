@@ -115,8 +115,6 @@ GEM
     lumberjack (1.0.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
-    masonry-rails (0.2.4)
-      railties
     method_source (0.8.2)
     mime-types (2.6.2)
     mini_portile (0.6.2)
@@ -250,7 +248,6 @@ DEPENDENCIES
   jquery-rails
   kaminari (~> 0.16.3)
   lodash-rails
-  masonry-rails
   pg (= 0.18.3)
   pry
   rails (= 4.2.4)
