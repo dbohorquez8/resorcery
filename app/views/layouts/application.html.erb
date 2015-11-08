@@ -13,8 +13,10 @@
         <div class="main-logo">
           <%= link_to "Resorcery", :root %>
         </div>
-        <nav class="main-nav">
-
+        <nav class="main-nav text-right">
+          <a href="<%= destroy_user_session_path %>" class="button button--warning button--large">
+            Logout
+          </a>
         </nav>
       </div>
     </header>
