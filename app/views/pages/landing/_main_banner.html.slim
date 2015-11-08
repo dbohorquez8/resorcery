@@ -1,16 +1,20 @@
-.wrapper
-  .big-soft--ends.text--left.push--sides
-    h2.title.text-color--white.weight--semibold.cd-headline.slide
+.container
+  .big-soft--ends
+    h2.main-banner__heading.cd-headline.slide
       .cd-words-wrapper
         b.is-visible
-          | ASSIGN TEAMS TO PROJECTS&nbsp;
+          | Assign Teams To Projects&nbsp;
         b
-          | PLAN YOUR SOCCER TEAM'S LINE UP&nbsp;
+          | Plan Your Soccer Team's Line Up&nbsp;
         b
-          | DISTRIBUTE YOUR WEDDING'S TABLES&nbsp;
+          | Distribute Your Wedding's Tables&nbsp;
         b
-          | ALLOCATE ANYTHING... REALLY&nbsp;
-    h2.title3
+          | Allocate Anything... Really&nbsp;
+    p.main-banner__subheading
       span.weight--semibold
         | Resorcery&nbsp;
       | is a flexible multi-purpose tool to assign and visualize resource allocations
+
+    .text--center
+      = link_to new_user_session_path, class: "button button-border--white button--large"
+        | Sign Up for Free

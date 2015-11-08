@@ -1,37 +1,34 @@
-.main-banner
-  = render partial: "pages/landing/header"
-  .js-main-banner
+.landing__main-banner
   = render partial: "pages/landing/main_banner"
-.section.keo-pet.block--center
 
-.section.soft--sides.relative
-  .wrapper
-    .feature-box__inviting.js-inviting-box
-      .feature-box__content.grid__item
-        h2.feature-box__title
-          span
-            | Resorcery is free, it's magic, it's flexible.
-        .cf
-      /*
-        .grid__item.desk--one-half.feature-item
-          section.feature-box__item-content.text--center
-            .feature-box__logo
-              = image_tag "logo_slack.png", alt: 'slack', class: "slack-button__img"
+.section.soft--ends
+  .container
+    h2.alpha.text--center
+      | Easy. Flexible.&nbsp;
+      strong Free.
 
-            span.feature-box__text
-              | If you are using Slack as your communication platform, please sign up using the link below.
-            .cf
+    .grid
+      .grid__item.large--one-half.one-whole
+        .panel
+          .panel__body
+            section.feature-box__item-content.text--center
+              .feature-box__logo
+                = image_tag "logo_slack.png", alt: 'slack', class: "slack-button__img"
 
-        .grid__item.desk--one-half.feature-item
-          section.feature-box__item-content.text--center
-            .feature-box__logo
-              = image_tag "logo_hipchat.png", alt: 'hipchat', class: "hipchat-button__img"
+              span.feature-box__text
+                | If you are using Slack as your communication platform, please sign up using the link below.
+      .grid__item.large--one-half.one-whole
+        .panel
+          .panel__body
+            section.feature-box__item-content.text--center
+              .feature-box__logo
+                = image_tag "logo_hipchat.png", alt: 'hipchat', class: "hipchat-button__img"
 
-            span.feature-box__text
-              | If you are using Hipchat as your communication platform, please sign up using the link below.
-            .cf
-        .feature-box__advice
-          = render "shared/find_out_more", link_class: "text-color--white"
+              span.feature-box__text
+                | If you are using Hipchat as your communication platform, please sign up using the link below.
+              
+              .feature-box__advice
+                = render "shared/find_out_more", link_class: "text-color--white"
 /*
   section.guide-view.soft--sides.text-color--white.relative
     .wrapper

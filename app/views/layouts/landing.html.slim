@@ -2,8 +2,9 @@ doctype html
 html lang="en"
   = render partial: 'shared/head'
   body.landing
-    .main-content
-      main.main-container
+    .main-container
+      = render partial: "pages/landing/header"
+      main.main-content
         = yield
     = render partial: 'shared/footer'
     = render partial: 'shared/scripts'

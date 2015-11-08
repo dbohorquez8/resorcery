@@ -1,17 +1,7 @@
-header.main-header.landing-header.cf
-  .wrapper
-    h1.main-logo.float--left
-      = link_to root_path do
-        = image_tag "svg/logo-white.svg", alt: 'Resorcery', width: '240'
-    .float--right
-      .main-menu
-        #js-main-mobile-menu.nav.main-menu__nav
-          a#js-close-mobile-menu.close(href="javascript:;") X
-          .cf
-
-          = link_to new_user_session_path, class: "button banner__button js-open-modal"
-            | Log in
-        #js-toggle-mobile-menu.main-menu__toggle-button
-          .toggle-stick
-          .toggle-stick
-          .toggle-stick
+header.main-header.landing__header.cf
+  .container
+    .main-logo
+      = link_to "", root_path
+    nav.nav.float--right
+      = link_to new_user_session_path, class: "button button-border--white"
+        | Sign Up for Free
