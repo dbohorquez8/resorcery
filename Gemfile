@@ -9,6 +9,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'd3-rails'
 gem 'lodash-rails'
+gem 'masonry-rails'
 
 gem 'active_model_serializers', '~> 0.9.3'
 gem 'acts-as-taggable-on', '~> 3.5'

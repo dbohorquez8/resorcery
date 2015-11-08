@@ -92,3 +92,23 @@
   bottom: 0;
   right: 0;
 }
+
+.workspace-chart__group,
+.workspace-chart__resource {
+  border-radius: 100%;
+}
+
+.workspace-chart__group {
+  background: $brand-primary;
+  position: relative;
+}
+
+.workspace-chart__resource {
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  position: absolute;
+  padding: 5px;
+  margin: 5px;
+}

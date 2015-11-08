@@ -1,79 +1,48 @@
 $(function (){
   Resorcery.render = function () {
-    var margin = 20,
-      diameter = $(".js-workspace-chart").height();
-      width = $(".js-workspace-chart").width();
+    var resourceSize = 50,
+        margin = 10,
+        radius;
 
-    var color = d3.scale.linear()
-        .domain([-1, 5])
-        .range(["hsl(152,80%,80%)", "hsl(228,30%,40%)"])
-        .interpolate(d3.interpolateHcl);
+    function maxResourcesPerRingIndex(ringIndex) {
+      return 3 * ringIndex * (ringIndex + 1);
+    }
 
-    var pack = d3.layout.pack()
-        .padding(15)
-        .size([diameter - margin, diameter - margin])
-        .value(function(d) { return d.size; })
+    $('.js-workspace-chart-group').each(function (){
+      var ringIndex = 1, maxResources = $(this).find('.resource').length;
+        
+      $(this).find('.js-workspace-chart-resource').each(function (index){
+        var resource = $(this);
+        var delta = maxResourcesPerRingIndex(ringIndex) > maxResources - 1 ? (maxResources - 1) - maxResourcesPerRingIndex(ringIndex - 1) : 6 * ringIndex;
+        
+        if(index == 0){
+          resource.css('top', 0 - resourceSize / 2)
+            .css('left', 0 - resourceSize / 2);
+          radius = (resourceSize) / 2;
+        }else{
+          radius = (resourceSize + margin) * (ringIndex);
+          var angle = 360 / delta;
 
-    var svg = d3.select(".js-workspace-chart").append("svg")
-        .attr("class", "circle-packing")
-        .attr("width", width)
-        .attr("height", diameter)
-      .append("g")
-        .attr("transform", "translate(" + width / 2 + "," + diameter / 2 + ")");
+          if(index == maxResourcesPerRingIndex(ringIndex)){
+            ringIndex++;
+          }
+        }
 
-    d3.json(Resorcery.routes.workspacePath.replace(/:wid/, Resorcery.workspace_id), function(error, workspaceJSON) {
-      var root = Resorcery.parser(workspaceJSON);
-      if (error) throw error;
-
-      var focus = root,
-          nodes = pack.nodes(root),
-          view;
-      var circle = svg.selectAll("circle")
-          .data(nodes)
-        .enter().append("circle")
-          .attr("class", function(d) { return d.parent ? d.children ? "circle-packing__node" : "circle-packing__node circle-packing__node--leaf" : "circle-packing__node circle-packing__node--root"; })
-          .on("click", function(d) { if (focus !== d) zoom(d), d3.event.stopPropagation(); });
-
-      var text = svg.selectAll("text")
-          .data(nodes)
-        .enter().append("text")
-          .attr("class", "circle-packing__label")
-          .style("fill-opacity", function(d) { return d.parent === root ? 1 : 0; })
-          .style("display", function(d) { return d.parent === root ? null : "none"; })
-          .text(function(d) { return d.name; });
-
-      var node = svg.selectAll("circle,text");
-
-      d3.select(".js-workspace-chart")
-          .style("background", color(-1))
-          .on("click", function() { zoom(root); });
-
-      zoomTo([root.x, root.y, root.r * 2 + margin]);
-
-      function zoom(d) {
-        var focus0 = focus; focus = d;
-
-        var transition = d3.transition()
-            .duration(d3.event.altKey ? 7500 : 750)
-            .tween("zoom", function(d) {
-              var i = d3.interpolateZoom(view, [focus.x, focus.y, focus.r * 2 + margin]);
-              return function(t) { zoomTo(i(t)); };
-            });
-
-        transition.selectAll("text")
-          .filter(function(d) { return d.parent === focus || this.style.display === "inline"; })
-            .style("fill-opacity", function(d) { return d.parent === focus ? 1 : 0; })
-            .each("start", function(d) { if (d.parent === focus) this.style.display = "inline"; })
-            .each("end", function(d) { if (d.parent !== focus) this.style.display = "none"; });
-      }
-
-      function zoomTo(v) {
-        var k = diameter / v[2]; view = v;
-        node.attr("transform", function(d) { return "translate(" + (d.x - v[0]) * k + "," + (d.y - v[1]) * k + ")"; });
-        circle.attr("r", function(d) { return d.r * k; });
-      }
+        var x = 0 - resourceSize / 2 - radius * Math.sin(angle * index * Math.PI / 180);
+        var y = 0 - resourceSize / 2 - radius * Math.cos(angle * index * Math.PI / 180);
+        resource.css('top', y)
+          .css('left', x);
+      });
+        
+        var size = 2 * radius + resourceSize;
+        $(this).width(size);
+        $(this).height(size);
+        $(this).find('.js-workspace-chart-resource').css('transform', 'translate('+ size / 2 +'px, '+ size / 2 +'px)');
     });
 
-    d3.select(self.frameElement).style("height", diameter + "px");
-  }
+    $('.js-workspace-chart').masonry({
+      itemSelector: '.js-workspace-chart-group',
+      columnWidth: 70,
+      gutter: 0
+    });
 });
