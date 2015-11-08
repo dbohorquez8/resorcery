@@ -30,7 +30,7 @@ class Api::V1::WorkspacesController < ApiController
       total_resources = workspace[:resources].count
       {
         estatistics: {
-          percentage_of_resources_allocated: (allocated_resources*100)/total_resources,
+          percentage_of_resources_allocated: total_resources > 0 ? (allocated_resources*100)/total_resources : 0,
           allocated_resources: allocated_resources,
           total_resources: total_resources,
           groups_without_allocations: groups_without_allocations
