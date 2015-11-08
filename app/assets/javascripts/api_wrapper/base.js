@@ -71,28 +71,3 @@ var API = (function(){
     destroy: destroy
   };
 })();
-
-var FormObject = (function(){
-  'use strict';
-  var $form = null;
-
-  var init = function(form){
-    $form = form;
-    return this;
-  };
-
-  function elem(_elem){
-    return $form.find(_elem);
-  }
-
-  function getVal(_elem){
-    return elem(_elem).val();
-  }
-
-  return {
-    init: init,
-    getVal: getVal,
-    elem:   elem,
-    find: elem
-  };
-})();

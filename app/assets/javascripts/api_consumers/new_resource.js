@@ -9,7 +9,7 @@ var NewResourceForm = (function(){
 
     $resourceList = $(listSelector);
 
-    EasyForm.listen($form, {
+    (new EasyForm).listen($form, {
       successCallback: successCallback,
       failureCallback: failureCallback,
       data:            formData
@@ -23,10 +23,10 @@ var NewResourceForm = (function(){
     });
   }
 
-  function formData(formObject){
+  function formData(){
     var params = {
       resource: {
-        name: formObject.getVal('.js-name')
+        name: $name.val()
       }
     };
     return params;

@@ -1,10 +1,9 @@
-var EasyForm = (function(){
+function EasyForm() {
   "use strict";
-  var $form, $formObject, $successCallback, $failureCallback, $data;
+  var $form, $successCallback, $failureCallback, $data;
 
   function listen(form, options){
     $form            = form;
-    $formObject      = FormObject.init($form);
     $successCallback = options.successCallback || function(){};
     $failureCallback = options.failureCallback || function(){};
     $data            = options.data;
@@ -39,7 +38,7 @@ var EasyForm = (function(){
     var errors = data.response.messages;
     if(typeof errors == "undefined") return true;
     $.each( Object.keys(errors) , function(i, elem){
-      $formObject.find("[data-name=" + elem + "]").addClass("errored");
+      $form.find("[data-name=" + elem + "]").addClass("errored");
     });
   }
 
@@ -49,7 +48,7 @@ var EasyForm = (function(){
       evt.preventDefault();
       evt.stopPropagation();
       // get the form data, calling the function that its supposed to return it.
-      var formData = $data($formObject);
+      var formData = $data();
 
       API.post({
         url:             $form.attr('action'),
@@ -69,7 +68,5 @@ var EasyForm = (function(){
     // });
   }
 
-  return {
-    listen: listen
-  };
-})();
+  this.listen = listen;
+};

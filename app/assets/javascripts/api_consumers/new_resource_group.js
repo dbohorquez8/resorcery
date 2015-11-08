@@ -7,7 +7,7 @@ var NewResourceGroupForm = (function(){
     $name = $form.find('.js-name');
     $submit = $form.find('.js-submit');
 
-    EasyForm.listen($form, {
+    (new EasyForm).listen($form, {
       successCallback: successCallback,
       failureCallback: failureCallback,
       data:            formData
@@ -21,10 +21,10 @@ var NewResourceGroupForm = (function(){
     });
   }
 
-  function formData(formObject){
+  function formData(){
     var params = {
       resource_group: {
-        name: formObject.getVal('.js-name')
+        name: $name.val()
       }
     };
     return params;
