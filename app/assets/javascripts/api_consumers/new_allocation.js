@@ -2,7 +2,7 @@ var NewAllocationForm = (function(){
   'use strict';
   var $form, $resourceId, $resourceGroupId, $startDate, $endDate, $submit;
 
-  function init(formSelector){
+  function init(formSelector, successCallback){
     $form = $(formSelector);
     $resourceId = $form.find('.js-resource-id');
     $resourceGroupId = $form.find('.js-resource-group-id');
@@ -14,16 +14,6 @@ var NewAllocationForm = (function(){
       successCallback: successCallback,
       failureCallback: failureCallback,
       data:            formData
-    });
-
-    $form.on("submit-finished", function(evt, status, data){
-      if(status == "success"){
-        // clean the form
-        $name.val("");
-        // append the new workspace to the page
-        var newWorkspace = $(ich["js-workspace-template"](data.response));
-        $(".js-new-workspace-container").after(newWorkspace);
-      }
     });
   }
 
@@ -37,10 +27,6 @@ var NewAllocationForm = (function(){
       }
     };
     return params;
-  }
-
-  // define handlers for submit button.
-  function successCallback(something){
   }
 
   function failureCallback(something){
