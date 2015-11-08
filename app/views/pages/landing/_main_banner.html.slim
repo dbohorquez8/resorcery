@@ -19,11 +19,12 @@
       = link_to new_user_registration_path, class: "button button-border--white button--large"
         | Sign Up for Free
 
+      span.push--sides 
+        | or
+
+      = link_to demo_path, class: "button button-border--white button--large"
+        | Try the Demo
+
     .main-banner__links
-      = link_to demo_path, class: ""
-        | Try a Demo
-
-      span •
-
       = link_to new_user_session_path, class: ""
         | I already have an account
