@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  get '/demo', to: "guests#show"
+  get '/demo', to: "guests#show", as: "demo"
 
   resource :dashboard, only: [:show]
 
