@@ -1,7 +1,7 @@
 $(function (){
   Resorcery.render = function () {
     var resourceSize = 50,
-        margin = 10,
+        margin = 5,
         radius;
 
     function maxResourcesPerRingIndex(ringIndex) {

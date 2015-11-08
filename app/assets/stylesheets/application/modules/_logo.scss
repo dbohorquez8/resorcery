@@ -1,7 +1,15 @@
 .main-logo{
   font-size: 1em;
+  line-height: 60px;
+  float: left;
   & > a{
-
+    background: url(/assets/svg/logo-white.svg) no-repeat 0 0;
+    background-size: cover;
+    display: inline-block;
+    width: 120px;
+    height: 30px;
+    font-size: 0;
+    vertical-align: middle;
   }
 }
 
