@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
     scope '/w/:wid', constraints: { wid: /[^\/]+/} do
       resource :workspace, only: [:show], path: ""
+      resources :availabilities, :only => [:show]
       resources :resources, :only => [:create]
       resources :resource_groups, :only => [:create]
       resources :allocations, :only => [:create, :index]
