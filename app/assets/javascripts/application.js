@@ -22,6 +22,7 @@
 //= require popup
 //= require pikaday
 
+//= require hash_parser
 //= require parser
 //= require renderer
 //= require refresher

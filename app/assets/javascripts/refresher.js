@@ -1,27 +1,36 @@
 $(function (){
-  function getURL() {
-    var baseURL = Resorcery.routes.workspacePath.replace(/:wid/, Resorcery.workspaceId), queryTerms = [];
-    var queryString = $.param(Resorcery.getDateParams());
+  function getQueryString() {
+    return $.param(Resorcery.getDateParams());
+  }
 
-    if (queryString.length){
-      baseURL = baseURL + "?" + queryString;
-    }
-    return baseURL;
+  Resorcery.parseLocationHash = function() {
+
   }
 
   Resorcery.getDateParams = function() {
     var params = {}
     if (Resorcery.startDate) {
-      params.start_date = Resorcery.startDate.toISOString();
+      params.start_date = Resorcery.startDate.format('YYYY-MM-DD');
     }
     if(Resorcery.endDate) {
-      params.end_date = Resorcery.endDate.toISOString();
+      params.end_date = Resorcery.endDate.format('YYYY-MM-DD');
     }
     return params;
   }
 
   Resorcery.refresh = function () {
-    $.getJSON(getURL(), function (workspaceJSON) {
+    var endpointURL = Resorcery.routes.workspacePath.replace(/:wid/, Resorcery.workspaceId);
+    var queryString = getQueryString();
+
+    if (queryString.length) {
+      endpointURL = endpointURL + "?" + queryString;
+    }
+
+    $.getJSON(endpointURL, function (workspaceJSON) {
+      if (queryString.length) {
+        window.location.hash = queryString;
+      }
+
       Resorcery.workspace = Resorcery.parser(workspaceJSON);
       Resorcery.render();
     });

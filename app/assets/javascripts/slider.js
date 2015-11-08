@@ -16,18 +16,32 @@ var DateRangeSlider = (function(){
     Resorcery.refresh();
   }
 
-  function init(selector, range, defaultValues) {
-    values = defaultValues;
+  function getRangeFromHash(){
+    var from, to, parsedHash = HashParser.getParsedHash(), range = {};
+    if (parsedHash.start_date && (from = values.indexOf(parsedHash.start_date)) != -1) {
+      range.from = from;
+    }
 
-    setRangeValues(range);
+    if (parsedHash.end_date && (to = values.indexOf(parsedHash.end_date)) != -1) {
+      range.to = to;
+    }
+    return range;
+  }
+
+  function init(selector, defaultRange, defaultValues) {
+    values = defaultValues;
+    var initialRange = _.merge({}, defaultRange, getRangeFromHash());
+
+    setRangeValues(initialRange);
+
     $elem = $(selector);
     return $elem.ionRangeSlider({
         grid: true,
         drag_interval: true,
         max_interval: 7,
         type: "double",
-        from: range.from,
-        to: range.to,
+        from: initialRange.from,
+        to: initialRange.to,
         values: values,
         onStart: handleUpdate,
         onFinish: handleUpdate
