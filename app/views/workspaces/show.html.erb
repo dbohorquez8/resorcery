@@ -14,16 +14,17 @@
 
       <section class="resources sidebar workspace__sidebar--left js-resources-sidebar">
         <h1 class="resources__title">Resources</h1>
-        <ul class="resources__list js-resources-list">
+        <ul class="list--stack resources__list js-resources-list">
           <%- @workspace.resources.each do |resource| %>
-            <li> <span> <%= resource.name %> (<a href="javascript:;" class="js-open-allocate-form" data-resource-name="<%= resource.name %>" data-resource-id="<%= resource.id %>">allocate</a>)</span> </li>
+            <li> <span> <%= resource.name %> 
+              <a href="javascript:;" class="js-open-allocate-form button button--small button--success float--right" data-resource-name="<%= resource.name %>" data-resource-id="<%= resource.id %>">Allocate</a></span> </li>
           <%- end %>
         </ul>
 
         <form class="js-new-resource-form" action="<%= resources_path(version:1, wid: @workspace.unique_id)%>" data-method="post" >
           <div class="form-inline">
             <input type="text" autocomplete="off" class="form-control form-control--clear input--large js-group-input-name js-name" placeholder="<%= @workspace.resources_name %> Name" name="resource[name]" data-name="name">
-            <input type="submit" class="button button--info button--large float--right js-submit" value="New">
+            <input type="submit" class="button button--info button--large float--right js-submit" value="Add">
           </div>
         </form>
 
@@ -56,46 +57,55 @@
 
 <% content_for :javascripts do %>
   <script id="js-availability-list-template" type="text/html">
-    <h3>Resource Availability</h3>
-    <ul>
+    <h3 class="zeta">Select from current availability:</h2>
+    <ul class="list--stack">
       {{#response}}
         <li>
-          <strong>from: </strong> {{human_start_date}} - <strong>to: </strong> {{human_end_date}}
-          (<a href="#" class="js-availability-use-this" data-start-date="{{start_date}}" data-end-date="{{end_date}}">use this</a>)
+          <strong>From: </strong> {{human_start_date}} - <strong>To: </strong> {{human_end_date}}
+          <a href="javascript:;" class="js-availability-use-this button button--small button--success float--right" data-start-date="{{start_date}}" data-end-date="{{end_date}}">Use this range</a>
         </li>
       {{/response}}
     </ul>
   </script>
 
   <script id="js-new-allocation-form-template" type="text/html">
-    <div class="js-availability-list">loading availability information</div>
+    <div class="modal--medium">
+      <h1 class="delta text--center">Allocate Resource</h1>
 
-    <form class="js-new-allocation-form clearfix" action="<%= allocations_path(version:1, wid: @workspace.unique_id)%>" data-method="post" >
-      <input class="js-resource-id" type="hidden" name="allocation[resource_id]" data-name="resource_id" value="{{resourceId}}">
+      <form class="js-new-allocation-form clearfix" action="<%= allocations_path(version:1, wid: @workspace.unique_id)%>" data-method="post" >
+        <input class="js-resource-id" type="hidden" name="allocation[resource_id]" data-name="resource_id" value="{{resourceId}}">
 
-      <div class="form-inline">
-        <label for="allocation[resource_group_id]" class="col-sm-2 control-label"><%= @workspace.resource_groups_name %></label>
+        <div class="form">
+          <div class="push--bottom">
+            <label for="allocation[resource_group_id]" class="label"><%= @workspace.resource_groups_name %></label>
 
-        <select class="form-control js-resource-group-id" name="allocation[resource_group_id]" data-name="resource_group_id">
-          {{#resourceGroups}}
-            <option value="{{id}}">{{name}}</option>
-          {{/resourceGroups}}
-        </select>
-      </div>
+            <select class="form-control js-resource-group-id" name="allocation[resource_group_id]" data-name="resource_group_id">
+              {{#resourceGroups}}
+                <option value="{{id}}">{{name}}</option>
+              {{/resourceGroups}}
+            </select>
+          </div>
+        </div>
 
-      <div class="form-inline">
-        <label for="allocation[start_date]">From</label>
-        <input class="js-start-date" type="text" name="allocation[start_date]" data-name="start_date" value="{{startDate}}">
-        <label for="allocation[end_date]">To</label>
-        <input class="js-end-date" type="text" name="allocation[ent_date]" data-name="end_date" value="{{endDate}}">
-      </div>
+        <div class="js-availability-list">Loading availability information</div>
 
-      <button type="submit" class="js-submit button button--info button--large float--right">OK</button>
-    </form>
+        <p>Or select manually:</p>
+
+        <div class="form-inline push--bottom">
+          <label for="allocation[start_date]" class="label">From</label>
+          <input class="js-start-date form-control" type="text" name="allocation[start_date]" data-name="start_date" value="{{startDate}}">
+          <label for="allocation[end_date]" class="label">To</label>
+          <input class="js-end-date form-control" type="text" name="allocation[ent_date]" data-name="end_date" value="{{endDate}}">
+        </div>
+
+        <button type="submit" class="js-submit button button--success float--right">Allocate</button>
+      </form>
+    </div>
   </script>
 
   <script id="js-resources-list-item-template" type="text/html">
-    <li><span>{{ name }} (<a href="javascript:;" class="js-open-allocate-form" data-resource-name="{{ name }}" data-resource-id="{{id}}">allocate</a>) </span></li>
+    <li><span>{{ name }} 
+      <a href="javascript:;" class="js-open-allocate-form button button--small button--success float--right" data-resource-name="{{ name }}" data-resource-id="{{id}}">Allocate</a> </span></li>
   </script>
 
   <script id="js-resources-group-template" type="text/html">

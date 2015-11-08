@@ -87,3 +87,16 @@ ol {
 dt { font-weight: bold; }
 
 dd { margin-left: 0px; }
+
+.list--stack {
+  list-style: none;
+  margin-left: 0;
+
+  & > li {
+    padding: 0.5em 1em;
+
+    &:nth-child(odd) {
+      background: rgba(0,0,0,0.05);
+    }
+  }
+}

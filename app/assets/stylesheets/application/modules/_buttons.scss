@@ -96,7 +96,13 @@
 }
 
 .button--large {
-  @include button-size(0.5em, 1em, 1.25em, 1em, 5px)
+  @include button-size(0.5em, 1em, 1.25em, 1em, 5px);
+  height: auto;
+}
+
+.button--small {
+  @include button-size(0.5em, 0.5em, 0.8em, 1em, 3px);
+  height: auto;
 }
 
 .button--block {
