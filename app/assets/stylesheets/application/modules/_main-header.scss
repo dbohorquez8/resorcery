@@ -1,6 +1,19 @@
 .main-header{
 	background-color: $brand-primary;
-	width: 100%;
   height: $header-height;
   line-height: $header-height;
+}
+
+.main-nav__item--button,
+.main-nav__item--link {
+  margin-left: 20px;
+}
+
+.main-nav__item--link {
+  color: #FFF;
+
+  &:hover {
+    color: #FFF;
+    text-decoration: underline;
+  }
 }

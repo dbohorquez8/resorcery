@@ -14,8 +14,9 @@
           <%= link_to "Resorcery", :root %>
         </div>
         <nav class="main-nav text-right">
+          <%= link_to "My Workspaces", dashboard_path, class: "main-nav__item--link" %>
           <% if user_signed_in? %>
-            <a href="<%= destroy_user_session_path %>" class="button button-border--white">
+            <a href="<%= destroy_user_session_path %>" class="button button-border--white main-nav__item--button">
               Log out
             </a>
           <% end %>
