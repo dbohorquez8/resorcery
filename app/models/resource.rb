@@ -36,7 +36,7 @@ class Resource < ActiveRecord::Base
 
     results.push(time_entry(date,'anytime'))
 
-    results.uniq
+    results.uniq.first(5)
   end
 
   def time_entry(start_date, end_date)
