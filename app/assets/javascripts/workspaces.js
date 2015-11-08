@@ -24,9 +24,16 @@ $(function (){
   });
 
   var allocationPopup = new $.Popup();
-  $('.js-workspace-chart').on('ajax:success', '.js-delete-allocation-link', function (e, target) {
-    console.log(e, target);
+  $(document).on('click', '.js-delete-allocation-link', function (e, target) {
+    API.destroy({
+      url: $(this).data('url'),
+      successCallback: function (data) {
+        allocationPopup.close();
+        Resorcery.refresh();
+      }
+    });
   });
+
   $('.js-workspace-chart').on('click', '.js-workspace-chart-resource', function (e, target) {
     var allocation = Resorcery.workspace.allocations[$(this).data('allocation-id')];
 
@@ -40,6 +47,9 @@ $(function (){
     });
 
     allocationPopup.open($('<div>').append(content));
+    $('.js-allocation-form').on('submit-finished', function (evt, status, data) {
+      if (status == "success") allocationPopup.close();
+    });
     NewAllocationForm.init('.js-allocation-form');
   });
 

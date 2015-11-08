@@ -92,7 +92,7 @@
 
       <button type="submit" class="js-submit button button--info button--large float--right">OK</button>
     </form>
-    <%= link_to "Delete Allocation", "#{allocations_path(version:1, wid: @workspace.unique_id)}/{{allocationId}}", method: :delete, remote: true, class: "js-delete-allocation-link" %>
+    <a href="javascript:;" class="js-delete-allocation-link" data-url="<%= allocations_path(version:1, wid: @workspace.unique_id)%>/{{allocationId}}">Delete Allocation</a>
   </script>
 
   <script id="js-new-allocation-form-template" type="text/html">
