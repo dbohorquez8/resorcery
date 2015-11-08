@@ -132,7 +132,7 @@
   </script>
 
   <script id="js-resources-list-item-template" type="text/html">
-    <li><span>{{ name }} 
+    <li><span>{{ name }}
       <a href="javascript:;" class="js-open-allocate-form button button--small button--success float--right" data-resource-name="{{ name }}" data-resource-id="{{id}}">Allocate</a> </span></li>
   </script>
 
@@ -147,6 +147,7 @@
   </script>
 
   <script type="text/javascript" charset="utf-8">
+    $(function () {Resorcery.init()});
     Resorcery.workspaceId = <%= @workspace.unique_id.to_json.html_safe %>;
     Resorcery.defaultDates = <%= default_dates.to_json.html_safe %>;
     NewResourceGroupForm.init(".js-new-resource-group-form");
