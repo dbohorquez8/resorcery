@@ -15,13 +15,16 @@
 //= require jquery_ujs
 //= require d3
 //= require masonry
+//= require icanhaz
+//= require ion.rangeSlider
+//= require slider
+//= require popup
+
 //= require parser
 //= require renderer
 //= require refresher
 //= require notify
-//= require icanhaz
-//= require ion.rangeSlider
-//= require slider
+//= require allocator
 
 // js for api wrappers and consumers
 
@@ -31,6 +34,8 @@
 //= require api_consumers/new_resource_group
 //= require api_consumers/new_resource
 //= require api_consumers/new_workspace
+//= require api_consumers/new_allocation
+
 
 //= require workspaces
 

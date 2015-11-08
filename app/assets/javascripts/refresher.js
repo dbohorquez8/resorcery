@@ -1,22 +1,23 @@
 $(function (){
   function getURL() {
-    var parsedDate, baseURL = Resorcery.routes.workspacePath.replace(/:wid/, Resorcery.workspaceId), queryTerms = [];
+    var baseURL = Resorcery.routes.workspacePath.replace(/:wid/, Resorcery.workspaceId), queryTerms = [];
+    var queryString = $.param(Resorcery.getDateParams());
 
-    if (Resorcery.startDate) {
-      parsedDate = new Date (Resorcery.startDate);
-      queryTerms.push("start_date="+parsedDate.toISOString());
+    if (queryString.length){
+      baseURL = baseURL + "?" + queryString;
     }
-
-    if (Resorcery.endDate) {
-      parsedDate = new Date (Resorcery.endDate);
-      queryTerms.push("end_date="+parsedDate.toISOString());
-    }
-
-    if (queryTerms.length) {
-      baseURL = baseURL + "?" + queryTerms.join('&');
-    }
-
     return baseURL;
+  }
+
+  Resorcery.getDateParams = function() {
+    var params = {}
+    if (Resorcery.startDate) {
+      params.start_date = Resorcery.startDate.toISOString();
+    }
+    if(Resorcery.endDate) {
+      params.end_date = Resorcery.endDate.toISOString();
+    }
+    return params;
   }
 
   Resorcery.refresh = function () {

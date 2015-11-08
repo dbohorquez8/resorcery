@@ -16,6 +16,8 @@ $(function (){
   DateRangeSlider.init("#js-workspace-date-slider", {from: 3, to: 7});
   Resorcery.refresh();
 
+  Allocator.init('.js-open-allocate-form', ich['js-new-allocation-form-template']);
+
   $(document).on('ajax:success', '#new_workspace', function (e, data, status, xhr) {
     window.location = data.response.location;
   });

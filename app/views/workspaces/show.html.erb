@@ -15,14 +15,14 @@
       <h1 class="resources__title">Resources</h1>
       <ul class="resources__list js-resources-list">
         <%- @workspace.resources.each do |resource| %>
-          <li> <%= resource.name %> </li>
+          <li> <span> <%= resource.name %> (<a href="javascript:;" class="js-open-allocate-form" data-resource-name="<%= resource.name %>" data-resource-id="<%= resource.id %>">allocate</a>)</span> </li>
         <%- end %>
       </ul>
 
       <form class="js-new-resource-form" action="<%= resources_path(version:1, wid: @workspace.unique_id)%>" data-method="post" >
         <div class="form-inline">
           <input type="text" autocomplete="off" class="form-control form-control--clear input--large js-group-input-name js-name" placeholder="<%= @workspace.resources_name %> Name" name="resource[name]" data-name="name">
-          <input type="submit" class="button button--info button--large float--right js-submit" value="OK">
+          <input type="submit" class="button button--info button--large float--right js-submit" value="New">
         </div>
       </form>
 
@@ -53,6 +53,28 @@
 </div>
 
 <% content_for :javascripts do %>
+  <script id="js-new-allocation-form-template" type="text/html">
+    <form class="js-new-allocation-form" action="<%= allocations_path(version:1, wid: @workspace.unique_id)%>" data-method="post" >
+      <input class="js-resource-id" type="hidden" name="allocation[resource_id]" data-name="resource_id" value="{{resourceId}}">
+
+      <input class="js-start-date" type="hidden" name="allocation[start_date]" data-name="start_date" value="{{startDate}}">
+
+      <input class="js-end-date" type="hidden" name="allocation[ent_date]" data-name="end_date" value="{{endDate}}">
+
+      <div class="form-inline">
+        <label for="allocation[resource_group_id]" class="col-sm-2 control-label"><%= @workspace.resource_groups_name %></label>
+
+        <select class="form-control js-resource-group-id" name="allocation[resource_group_id]" data-name="resource_group_id">
+          {{#resourceGroups}}
+            <option value="{{id}}">{{name}}</option>
+          {{/resourceGroups}}
+        </select>
+      </div>
+
+      <button type="submit" class="js-submit btn btn-default">OK</button>
+    </form>
+  </script>
+
   <script id="js-resources-list-item-template" type="text/html">
     <li>{{ name }}</li>
   </script>

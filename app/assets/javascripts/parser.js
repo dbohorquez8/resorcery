@@ -10,6 +10,7 @@ $(function(){
       child.name = resource_group.name;
       child.bg_color = "#" + resource_group.metadata.background_color;
       child.size = 1;
+      child.id = resource_group.id;
 
       var allocations = _.filter(workspace.allocations, {
         resource_group_id: resource_group.id

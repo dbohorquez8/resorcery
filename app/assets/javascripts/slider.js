@@ -11,8 +11,13 @@ var DateRangeSlider = (function(){
   ];
 
   function setRangeValues (range) {
-    Resorcery.startDate = values[range.from];
-    Resorcery.endDate   = values[range.to];
+    setDateField('startDate', values[range.from]);
+    setDateField('endDate', values[range.to]);
+  }
+
+  function setDateField (fieldName, value) {
+    delete Resorcery[fieldName];
+    Resorcery[fieldName] = new Date(value);
   }
 
   function handleUpdate (data) {
