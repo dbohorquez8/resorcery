@@ -42,7 +42,6 @@ Allocator = (function(){
     API.get({
       url: '/1/w/' + Resorcery.workspaceId + '/availabilities/' + data.resourceId + '?start_date='+ Resorcery.getDateParams().start_date,
       successCallback: function(something){
-        console.log(something);
         $(".js-availability-list").html(ich['js-availability-list-template'](something));
       },
       failureCallback: function(something){

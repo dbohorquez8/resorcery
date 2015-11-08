@@ -27,7 +27,6 @@ function EasyForm() {
   }
 
   function failure(data, textStatus, jqXHR){
-    console.log(data, textStatus, jqXHR);
     $failureCallback(data);
     addErrorsToElements(data);
     $form.trigger("submit-finished", ["error", data]);
@@ -58,7 +57,6 @@ function EasyForm() {
         failureCallback: failure,
         complete:        function(){
           enableFormAndPage();
-          console.log("complete API post");
         }
       });
     });

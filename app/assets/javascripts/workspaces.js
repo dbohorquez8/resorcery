@@ -23,6 +23,26 @@ $(function (){
     window.location = data.response.location;
   });
 
+  var allocationPopup = new $.Popup();
+  $('.js-workspace-chart').on('ajax:success', '.js-delete-allocation-link', function (e, target) {
+    console.log(e, target);
+  });
+  $('.js-workspace-chart').on('click', '.js-workspace-chart-resource', function (e, target) {
+    var allocation = Resorcery.workspace.allocations[$(this).data('allocation-id')];
+
+    var content = ich['js-allocation-form-template']({
+      allocationId: allocation.allocationId,
+      resourceId: allocation.resourceId,
+      resourceName: allocation.name,
+      resourceGroups: Resorcery.workspace.children,
+      startDate: allocation.startDate,
+      endDate: allocation.endDate
+    });
+
+    allocationPopup.open($('<div>').append(content));
+    NewAllocationForm.init('.js-allocation-form');
+  });
+
 });
 
 

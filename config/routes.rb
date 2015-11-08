@@ -16,7 +16,11 @@ Rails.application.routes.draw do
       resources :availabilities, :only => [:show]
       resources :resources, :only => [:create]
       resources :resource_groups, :only => [:create]
-      resources :allocations, :only => [:create, :index]
+      resources :allocations, :only => [:create, :index, :destroy] do
+        collection do
+          post '/:allocation_id', to: "allocations#update", as: :update
+        end
+      end
     end
   end
 

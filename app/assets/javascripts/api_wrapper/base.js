@@ -17,8 +17,6 @@ var AjaxSettingsParser = (function(){
   function ajaxResponseHandler(successCallback, failureCallback){
     return {
       success: function(data, textStatus, jqXHR) {
-        console.log("success");
-        console.log(data);
         if (jqXHR.status == 204) {
           successCallback({ status: "ok" }, textStatus, jqXHR);
         }else if(data.response.error){
