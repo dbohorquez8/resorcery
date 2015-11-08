@@ -1,5 +1,11 @@
 puts "Creating guest user"
-@guest = User.find_or_create_by!(email: "guest@resorcery.co")
+@guest = User.find_or_initialize_by(email: "guest@resorcery.co")
+if !@guest.persisted?
+  @guest.password = "thewalkingdevsrock!"
+  @guest.password_confirmation = "thewalkingdevsrock!"
+  @guest.save
+end
+
 puts "Creating workspace..."
 @guest.workspaces.first.update_attribute "name", "RailsRumble!"
 
