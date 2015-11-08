@@ -1,3 +1,22 @@
 .workspace-list__item {
   
 }
+
+.workspace-stats {
+  display: inline-block;
+  margin-right: 20px;
+  text-align: center;
+}
+
+.workspace-stats__label {
+  color: $gray-light;
+  font-size: 10px;
+  font-weight: 600;
+  display: block;
+  text-transform: uppercase;
+}
+
+.workspace-stats__metric {
+  color: $color-text-body;
+  font-size: 24px;
+}

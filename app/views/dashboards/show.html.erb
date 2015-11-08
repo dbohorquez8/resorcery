@@ -8,14 +8,24 @@
   </div>
 
   <div class="workspace-list grid">
-    <% @workspaces.each do |workspace| %><div class="grid__item one-quarter">
-      <%= link_to workspace_path(wid: workspace.unique_id, name: workspace.name.parameterize), class: "workspace-list__item panel panel--alt" do %>
+    <% @workspaces.each do |workspace| %><div class="grid__item one-whole medium--one-quarter large--one-fifth">
+      <%= link_to workspace_path(wid: workspace.unique_id, name: workspace.name.parameterize), class: "workspace-list__item panel panel--alt panel--small-space" do %>
         <span class="panel__head" style="background-color: #<%= workspace.metadata['background_color'] %>">
           <%= workspace.name %>
         </span>
         <span class="panel__body">
-          <%= workspace.resources_count %>
-          <%= workspace.resource_groups_count %>
+          <span class="workspace-stats">
+            <span class="workspace-stats__label">Groups</span>
+            <span class="workspace-stats__metric">
+              <%= workspace.resource_groups_count %>
+            </span>
+          </span>
+          <span class="workspace-stats">
+            <span class="workspace-stats__label">Resources</span>
+            <span class="workspace-stats__metric">
+              <%= workspace.resources_count %>
+            </span>
+          </span>
         </span>
       <% end -%>
     </div><% end -%>
