@@ -1,0 +1,18 @@
+header.main-header.landing-header.cf
+  h1.main-logo.float--left
+    = link_to root_path do
+      = image_tag "convergely-logo.png", class: "slater-logo", alt: 'Convergely'
+    = link_to root_path do
+      = image_tag "convergely-logo-single.png", class: "slater-logo-single", alt: 'Convergely'
+  .float--right
+    .main-menu
+      #js-main-mobile-menu.nav.main-menu__nav
+        a#js-close-mobile-menu.close(href="javascript:;") X
+        .cf
+
+        = link_to new_user_session_path, class: "button banner__button js-open-modal"
+          | Log in
+      #js-toggle-mobile-menu.main-menu__toggle-button
+        .toggle-stick
+        .toggle-stick
+        .toggle-stick

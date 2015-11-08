@@ -1,0 +1,12 @@
+head
+  title
+    = yield(:title)
+    | Resorcery
+  = yield(:head_first) if content_for? :head_first
+
+  = favicon_link_tag "favicon.ico", rel: "shortcut icon", type: "image/x-icon"
+  link href="//fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" type="text/css"
+
+  = csrf_meta_tags
+
+  = stylesheet_link_tag 'landing', media: 'all'

@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   before_action :redirect_signed_in_users, only: [:index]
+  layout "landing", only: [:index]
 
   def index
   end

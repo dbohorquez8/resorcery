@@ -1,0 +1,9 @@
+doctype html
+html lang="en"
+  = render partial: 'shared/head'
+  body.landing
+    .main-content
+      main.main-container
+        = yield
+    = render partial: 'shared/footer'
+    = render partial: 'shared/scripts'

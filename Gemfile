@@ -19,6 +19,7 @@ gem 'rocket_pants', '~> 1.0'
 gem 'kaminari', '~> 0.16.3'
 gem 'devise'
 gem 'counter_culture', '~> 0.1.33'
+gem 'slim-rails', '~> 3.0'
 
 # random name generator
 gem 'bazaar', '0.0.2'

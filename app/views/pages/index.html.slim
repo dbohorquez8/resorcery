@@ -1,0 +1,58 @@
+a.main-banner
+  = render partial: "pages/landing/header"
+  .js-main-banner
+  = render partial: "pages/landing/main_banner"
+.section.keo-pet.block--center
+
+.section.soft--sides.relative
+  .wrapper
+    .feature-box__inviting.js-inviting-box
+      .feature-box__content.grid__item
+        h2.feature-box__title
+          span
+            | /keo
+          |  will help you to be more productive with your chat app.
+        .cf
+        .grid__item.desk--one-half.feature-item
+          section.feature-box__item-content.text--center
+            .feature-box__logo
+              = image_tag "logo_slack.png", alt: 'slack', class: "slack-button__img"
+
+            span.feature-box__text
+              | If you are using Slack as your communication platform, please sign up using the link below.
+            .cf
+
+        .grid__item.desk--one-half.feature-item
+          section.feature-box__item-content.text--center
+            .feature-box__logo
+              = image_tag "logo_hipchat.png", alt: 'hipchat', class: "hipchat-button__img"
+
+            span.feature-box__text
+              | If you are using Hipchat as your communication platform, please sign up using the link below.
+            .cf
+        .feature-box__advice
+          = render "shared/find_out_more", link_class: "text-color--white"
+section.guide-view.soft--sides.text-color--white.relative
+  .wrapper
+    .artile.guide-view__text.weight--light
+      = t('views.convergely.guide-view')
+      span.guide-view__link.weight--semibold
+        = t('views.convergely.guide-view_link')
+    .guide-view__arrow.float--right
+
+.stuff.text--center.grid__item.one-whole
+  .wrapper
+    article.stuff--title1.weight--light
+      = t('views.convergely.stuff-title')
+      span.stuff--title2.weight--semibold
+        = t('views.convergely.stuff-title2')
+    = render "pages/landing/cool_stuff"
+
+.wrapper
+  article.comment-below.text--center.weight--light
+    = t('views.convergely.comment-below')
+    a.weight--semibold(href="mailto:#{t('views.convergely.comment-below-mail')}")
+      = t('views.convergely.comment-below-mail')
+
+- content_for :javascript do
+  = javascript_include_tag "landing/animate-headlines"
