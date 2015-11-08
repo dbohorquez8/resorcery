@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require moment
 //= require lodash
 //= require jquery_ujs
 //= require d3

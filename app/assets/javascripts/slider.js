@@ -8,7 +8,7 @@ var DateRangeSlider = (function(){
 
   function setDateField (fieldName, value) {
     delete Resorcery[fieldName];
-    Resorcery[fieldName] = new Date(value);
+    Resorcery[fieldName] = moment(value);
   }
 
   function handleUpdate (data) {
