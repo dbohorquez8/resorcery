@@ -9,7 +9,7 @@ $(function (){
     }
 
     $('.js-workspace-chart-group').each(function (){
-      var ringIndex = 1, maxResources = $(this).find('.resource').length;
+      var ringIndex = 1, maxResources = $(this).find('.js-workspace-chart-resource').length;
         
       $(this).find('.js-workspace-chart-resource').each(function (index){
         var resource = $(this);
@@ -45,4 +45,5 @@ $(function (){
       columnWidth: 70,
       gutter: 0
     });
+  }
 });

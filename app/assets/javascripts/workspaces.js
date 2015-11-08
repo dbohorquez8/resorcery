@@ -4,10 +4,9 @@ $(function (){
     $target.toggleClass('is-visible');
     $(this).toggleClass('is-active');
 
-    // so we always focus the first imput toggled with this
     setTimeout(function(){
       if($target.hasClass("is-visible")){
-        $target.find("input[type=text]:first").focus();
+        $target.find(".js-group-input-name").focus();
       }
     }, 300);
 

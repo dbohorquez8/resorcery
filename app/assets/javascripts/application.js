@@ -14,10 +14,9 @@
 //= require lodash
 //= require jquery_ujs
 //= require d3
-//= require masonry/jquery.masonry
+//= require masonry
 //= require parser
 //= require renderer
-//= require circle-packing
 //= require notify
 //= require icanhaz
 
