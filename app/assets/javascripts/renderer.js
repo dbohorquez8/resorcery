@@ -1,4 +1,11 @@
 $(function (){
+  function resetMasonry() {
+    var chart = $('.js-workspace-chart');
+    if (chart.data('masonry')) {
+      chart.masonry('destroy');
+    }
+  }
+
   function insertHTML() {
     $('.js-workspace-chart').html("");
 
@@ -63,6 +70,7 @@ $(function (){
 
   Resorcery.render = function () {
     insertHTML();
+    resetMasonry();
     drawGroups();
   }
 });

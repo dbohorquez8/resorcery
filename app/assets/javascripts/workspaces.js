@@ -13,10 +13,8 @@ $(function (){
 
   });
 
-  $.getJSON(Resorcery.routes.workspacePath.replace(/:wid/, Resorcery.workspaceId) + "?start_date=2015-09-01&end_date=2015-11-5", function (workspaceJSON) {
-    Resorcery.workspace = Resorcery.parser(workspaceJSON);
-    Resorcery.render();
-  });
+  DateRangeSlider.init("#js-workspace-date-slider", {from: 3, to: 7});
+  Resorcery.refresh();
 
   $(document).on('ajax:success', '#new_workspace', function (e, data, status, xhr) {
     window.location = data.response.location;

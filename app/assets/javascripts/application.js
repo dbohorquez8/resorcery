@@ -17,8 +17,11 @@
 //= require masonry
 //= require parser
 //= require renderer
+//= require refresher
 //= require notify
 //= require icanhaz
+//= require ion.rangeSlider
+//= require slider
 
 // js for api wrappers and consumers
 

@@ -32,7 +32,7 @@ var NewResourceGroupForm = (function(){
 
   // define handlers for submit button.
   function successCallback(something){
-    Resorcery.render();
+    Resorcery.refresh();
   }
 
   function failureCallback(something){
