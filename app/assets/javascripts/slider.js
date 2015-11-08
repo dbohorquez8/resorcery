@@ -38,7 +38,6 @@ var DateRangeSlider = (function(){
     return $elem.ionRangeSlider({
         grid: true,
         drag_interval: true,
-        max_interval: 7,
         type: "double",
         from: initialRange.from,
         to: initialRange.to,
