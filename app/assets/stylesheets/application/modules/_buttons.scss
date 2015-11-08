@@ -1,5 +1,6 @@
 .button {
   @include button-size($padding-base-vertical, $padding-base-vertical * 2, 1em, 1em, 5px);
+  height: $input-height-base;
 }
 
 .button--default {

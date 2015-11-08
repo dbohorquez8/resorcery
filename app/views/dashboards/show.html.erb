@@ -3,33 +3,27 @@
     <div class="grid__item one-half">
       <h1>Workspaces</h1>
     </div>
-    <!--
-
-    <div class="grid__item one-half text--right section__nav"><%= link_to "New Workspace", new_workspace_path, class: "button button--success" %></div>
-    -->
   </div>
 
   <div class="workspace-list grid">
-    <div class="grid__item one-quarter js-new-workspace-container">
-      <div class="workspace-list__item panel panel--alt">
-        <span class="panel__head" style="background-color: #ccc">
-          Add new workspace
+    <div class="grid__item one-whole medium--one-quarter large--one-fifth js-new-workspace-container">
+      <div class="workspace-list__item panel panel--small-space panel--alt">
+        <span class="panel__head">
+          Add New Workspace
         </span>
         <span class="panel__body">
 
           <form class="js-new-workspace-form" action="<%= workspaces_path(version:1)%>" data-method="post" >
             <div class="form-inline">
-              <input type="text" autocomplete="off" class="form-control form-control--clear input--large js-group-input-name js-name" placeholder="Workspace name" name="workspace[name]" data-name="name">
-              <input type="submit" class="button button--info button--large float--right js-submit" value="OK">
+              <input type="text" autocomplete="off" class="form-control form-control--clear js-group-input-name js-name" placeholder="Workspace name" name="workspace[name]" data-name="name">
+              <input type="submit" class="button button--info float--right js-submit" value="OK">
             </div>
           </form>
 
         </span>
       </div>
-    </div>
-
-    <% @workspaces.each do |workspace| %>
-      <div class="grid__item one-whole medium--one-quarter large--one-fifth">
+    </div><!--
+    --><% @workspaces.each do |workspace| %><div class="grid__item one-whole medium--one-quarter large--one-fifth">
         <%= link_to workspace_path(wid: workspace.unique_id, name: workspace.name.parameterize), class: "workspace-list__item panel panel--alt panel--small-space" do %>
           <span class="panel__head" style="background-color: #<%= workspace.metadata['background_color'] %>">
             <%= workspace.name %>
@@ -49,8 +43,7 @@
             </span>
           </span>
         <% end -%>
-      </div>
-    <% end -%>
+      </div><% end -%>
   </div>
 </div>
 
