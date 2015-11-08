@@ -1,6 +1,6 @@
 .landing__main-banner,
 .authentication {
-  background: #746AC4 url(/assets/main-banner.jpg) no-repeat center;
+  background: #746AC4 asset-url("main-banner.jpg") no-repeat center;
   background-size: cover;
   color: white;
   padding: 4em 0;
@@ -63,7 +63,7 @@
     text-align: center;
 
     @include grid-media-query('medium'){
-      background: url(/assets/illustration.png) no-repeat 100% 20px;
+      background: asset-url("illustration.png") no-repeat 100% 20px;
       background-size: 462px 256px;
       text-align: left;
     }

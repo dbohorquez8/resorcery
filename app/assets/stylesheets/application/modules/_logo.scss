@@ -3,7 +3,7 @@
   line-height: 60px;
   float: left;
   & > a{
-    background: url(/assets/svg/logo-white.svg) no-repeat 0 0;
+    background: asset-url("svg/logo-white.svg") no-repeat 0 0;
     background-size: cover;
     display: inline-block;
     width: 120px;
