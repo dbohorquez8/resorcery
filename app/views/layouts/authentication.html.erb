@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Resorcery</title>
+  <%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Catamaran:400,300,600', media: 'all' %>
+  <%= stylesheet_link_tag 'landing', media: 'all' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="main-container authentication">
+    <div class="main-logo text--center">
+      <%= link_to "Resorcery", :root %>
+    </div>
+    <main class="main-content authentication__content">
+      <%= yield %>
+    </main>
+  </div>
+  <%= render partial: 'shared/footer' %>
+  <%= javascript_include_tag 'application' %>
+  <%= yield :javascripts %>
+</body>
+</html>
