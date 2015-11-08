@@ -41,7 +41,17 @@ var NewAllocationForm = (function(){
     console.log('Form submit failed', something);
   }
 
+  function startDatePicker(){
+    return $startDate;
+  }
+
+  function endDatePicker(){
+    return $endDate;
+  }
+
   return {
-    init: init
+    init: init,
+    startDatePicker: startDatePicker,
+    endDatePicker: endDatePicker,
   };
 })();

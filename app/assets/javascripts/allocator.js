@@ -7,6 +7,14 @@ Allocator = (function(){
     bindEvents(linkSelector);
   }
 
+  function parseDate(date){
+    if(date == "anytime"){
+      return moment().add(5, 'days').format();
+    }else{
+      return date;
+    }
+  }
+
   function bindEvents(linkSelector) {
     $(document).on('click', linkSelector, function (evt){
       evt.preventDefault();
@@ -30,7 +38,26 @@ Allocator = (function(){
     var content = $("<div>");
     content.append(popupTemplate(data));
     popup.open(content);
-    NewAllocationForm.init('.js-new-allocation-form');
+
+    API.get({
+      url: '/1/w/' + Resorcery.workspaceId + '/availabilities/' + data.resourceId,
+      successCallback: function(something){
+        console.log(something);
+        $(".js-availability-list").html(ich['js-availability-list-template'](something));
+      },
+      failureCallback: function(something){
+        console.log(something);
+      }
+    });
+
+    var allocationForm = NewAllocationForm.init('.js-new-allocation-form');
+
+    // when click on use this, it will modify dates in the date
+    $(".js-availability-list").on('click', ".js-availability-use-this", function(){
+
+      NewAllocationForm.startDatePicker().setDate( parseDate($(this).data("start-date")) );
+      NewAllocationForm.endDatePicker().setDate( parseDate($(this).data("end-date")) );
+    });
 
     $('.js-new-allocation-form').on("submit-finished", function(evt, status, data){
       if(status == "success"){

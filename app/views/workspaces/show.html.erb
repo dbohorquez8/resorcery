@@ -55,7 +55,21 @@
 </div>
 
 <% content_for :javascripts do %>
+  <script id="js-availability-list-template" type="text/html">
+    <h3>Resource Availability</h3>
+    <ul>
+      {{#response}}
+        <li>
+          <strong>from: </strong> {{human_start_date}} - <strong>to: </strong> {{human_end_date}}
+          (<a href="#" class="js-availability-use-this" data-start-date="{{start_date}}" data-end-date="{{end_date}}">use this</a>)
+        </li>
+      {{/response}}
+    </ul>
+  </script>
+
   <script id="js-new-allocation-form-template" type="text/html">
+    <div class="js-availability-list">loading availability information</div>
+
     <form class="js-new-allocation-form clearfix" action="<%= allocations_path(version:1, wid: @workspace.unique_id)%>" data-method="post" >
       <input class="js-resource-id" type="hidden" name="allocation[resource_id]" data-name="resource_id" value="{{resourceId}}">
 

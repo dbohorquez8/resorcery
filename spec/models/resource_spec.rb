@@ -50,8 +50,14 @@ RSpec.describe Resource, type: :model do
     # - - - - - - - - - - - -
     it "should return today - anytime soon when there are no allocations" do
       result = @resource.fetch_availability(start_date: Date.current).first
-      expect(result[:start]).to eq(format_date(Date.current))
-      expect(result[:end]).to eq("anytime")
+      expect(result[:start_date]).to eq(format_date(Date.current))
+      expect(result[:end_date]).to eq("anytime")
+    end
+
+    # - - - - - - - - - - - -
+    it "should return only one result when there are no allocations" do
+      result = @resource.fetch_availability(start_date: Date.current)
+      expect(result.count).to eq(1)
     end
 
     context 'if the user has one allocation' do
@@ -60,8 +66,8 @@ RSpec.describe Resource, type: :model do
         allocation = create(:allocation_with_relations, resource: @resource, start_date: Date.current + 7.days, end_date: Date.current + 15.days)
 
         result = @resource.fetch_availability(start_date: Date.current).first
-        expect(result[:start]).to eq(format_date(Date.current))
-        expect(result[:end]).to eq(format_date(allocation.start_date - 1.day))
+        expect(result[:start_date]).to eq(format_date(Date.current))
+        expect(result[:end_date]).to eq(format_date(allocation.start_date - 1.day))
       end
 
       # [allocation] - - - - - -
@@ -69,8 +75,8 @@ RSpec.describe Resource, type: :model do
         it "should return one day after the first allocation until any time" do
           allocation = create(:allocation_with_relations, resource: @resource, start_date: Date.current, end_date: Date.current + 10.days)
           result = @resource.fetch_availability(start_date: Date.current).first
-          expect(result[:start]).to eq(format_date(Date.current + 11.days))
-          expect(result[:end]).to eq("anytime")
+          expect(result[:start_date]).to eq(format_date(Date.current + 11.days))
+          expect(result[:end_date]).to eq("anytime")
         end
       end
     end
@@ -91,14 +97,14 @@ RSpec.describe Resource, type: :model do
         it "should return non overlaping ranges" do
           result = @resource.fetch_availability(start_date: Date.current)
 
-          expect(result[0][:start]).to eq(format_date(Date.current))
-          expect(result[0][:end]).to eq(format_date(@allocation1.start_date - 1.day))
+          expect(result[0][:start_date]).to eq(format_date(Date.current))
+          expect(result[0][:end_date]).to eq(format_date(@allocation1.start_date - 1.day))
 
-          expect(result[1][:start]).to eq(format_date(@allocation1.end_date + 1.day))
-          expect(result[1][:end]).to eq(format_date(@allocation2.start_date - 1.day))
+          expect(result[1][:start_date]).to eq(format_date(@allocation1.end_date + 1.day))
+          expect(result[1][:end_date]).to eq(format_date(@allocation2.start_date - 1.day))
 
-          expect(result[2][:start]).to eq(format_date(@allocation2.end_date + 1.day))
-          expect(result[2][:end]).to eq("anytime")
+          expect(result[2][:start_date]).to eq(format_date(@allocation2.end_date + 1.day))
+          expect(result[2][:end_date]).to eq("anytime")
         end
 
         context 'no spaces between them' do
@@ -118,11 +124,11 @@ RSpec.describe Resource, type: :model do
           it "should ignore allocations that have no espaces between them" do
             result = @resource.fetch_availability(start_date: Date.current)
 
-            expect(result[0][:start]).to eq(format_date(Date.current))
-            expect(result[0][:end]).to eq(format_date(@allocation1.start_date - 1.day))
+            expect(result[0][:start_date]).to eq(format_date(Date.current))
+            expect(result[0][:end_date]).to eq(format_date(@allocation1.start_date - 1.day))
 
-            expect(result[1][:start]).to eq(format_date(@allocation2.end_date + 1.day))
-            expect(result[1][:end]).to eq('anytime')
+            expect(result[1][:start_date]).to eq(format_date(@allocation2.end_date + 1.day))
+            expect(result[1][:end_date]).to eq('anytime')
           end
         end
 
