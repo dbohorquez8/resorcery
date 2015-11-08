@@ -1,6 +1,7 @@
 class Api::V1::WorkspacesController < ApiController
   include ManageDefaultDates
   before_action :init_dates_range
+  skip_before_filter :authenticate_user!, only: [:show]
 
   version 1
 
@@ -14,7 +15,7 @@ class Api::V1::WorkspacesController < ApiController
   end
 
   def show
-    workspace = current_user.workspaces.from_unique_id(workspace_id).includes(:resources, :resource_groups).first!
+    workspace = Workspace.from_unique_id(workspace_id).includes(:resources, :resource_groups).first!
     serialized = WorkspaceSerializer.new(workspace).serializable_hash
     serialized[:allocations] = ActiveModel::ArraySerializer.new(workspace.allocations.overlapping(@start_date, @end_date), each_serializer: AllocationSerializer).serializable_array
     expose serialized, metadata: calculate_statistics(serialized)

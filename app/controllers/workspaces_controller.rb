@@ -10,6 +10,6 @@ class WorkspacesController < ApplicationController
 
   private
     def load_workspace
-      @workspace = current_user.workspaces.from_unique_id(params[:wid]).first!
+      @workspace = Workspace.from_unique_id(params[:wid]).first!
     end
 end

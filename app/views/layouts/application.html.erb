@@ -14,9 +14,11 @@
           <%= link_to "Resorcery", :root %>
         </div>
         <nav class="main-nav text-right">
-          <a href="<%= destroy_user_session_path %>" class="button button--warning button--large">
-            Log out
-          </a>
+          <% if user_signed_in? %>
+            <a href="<%= destroy_user_session_path %>" class="button button--warning button--large">
+              Log out
+            </a>
+          <% end %>
         </nav>
       </div>
     </header>
