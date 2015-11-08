@@ -1,4 +1,4 @@
-a.main-banner
+.main-banner
   = render partial: "pages/landing/header"
   .js-main-banner
   = render partial: "pages/landing/main_banner"
@@ -10,9 +10,9 @@ a.main-banner
       .feature-box__content.grid__item
         h2.feature-box__title
           span
-            | /keo
-          |  will help you to be more productive with your chat app.
+            | Resorcery is free, it's magic, it's flexible.
         .cf
+      /*
         .grid__item.desk--one-half.feature-item
           section.feature-box__item-content.text--center
             .feature-box__logo
@@ -32,27 +32,28 @@ a.main-banner
             .cf
         .feature-box__advice
           = render "shared/find_out_more", link_class: "text-color--white"
-section.guide-view.soft--sides.text-color--white.relative
-  .wrapper
-    .artile.guide-view__text.weight--light
-      = t('views.convergely.guide-view')
-      span.guide-view__link.weight--semibold
-        = t('views.convergely.guide-view_link')
-    .guide-view__arrow.float--right
+/*
+  section.guide-view.soft--sides.text-color--white.relative
+    .wrapper
+      .artile.guide-view__text.weight--light
+        = t('views.convergely.guide-view')
+        span.guide-view__link.weight--semibold
+          = t('views.convergely.guide-view_link')
+      .guide-view__arrow.float--right
 
-.stuff.text--center.grid__item.one-whole
-  .wrapper
-    article.stuff--title1.weight--light
-      = t('views.convergely.stuff-title')
-      span.stuff--title2.weight--semibold
-        = t('views.convergely.stuff-title2')
-    = render "pages/landing/cool_stuff"
+  .stuff.text--center.grid__item.one-whole
+    .wrapper
+      article.stuff--title1.weight--light
+        = t('views.convergely.stuff-title')
+        span.stuff--title2.weight--semibold
+          = t('views.convergely.stuff-title2')
+      = render "pages/landing/cool_stuff"
 
-.wrapper
-  article.comment-below.text--center.weight--light
-    = t('views.convergely.comment-below')
-    a.weight--semibold(href="mailto:#{t('views.convergely.comment-below-mail')}")
-      = t('views.convergely.comment-below-mail')
+  .wrapper
+    article.comment-below.text--center.weight--light
+      = t('views.convergely.comment-below')
+      a.weight--semibold(href="mailto:#{t('views.convergely.comment-below-mail')}")
+        = t('views.convergely.comment-below-mail')
 
 - content_for :javascript do
   = javascript_include_tag "landing/animate-headlines"
