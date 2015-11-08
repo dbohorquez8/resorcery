@@ -28,41 +28,53 @@
       </div>
     </div>
 
-    <% @workspaces.each do |workspace| %><div class="grid__item one-whole medium--one-quarter large--one-fifth">
-      <%= link_to workspace_path(wid: workspace.unique_id, name: workspace.name.parameterize), class: "workspace-list__item panel panel--alt panel--small-space" do %>
-        <span class="panel__head" style="background-color: #<%= workspace.metadata['background_color'] %>">
-          <%= workspace.name %>
-        </span>
-        <span class="panel__body">
-          <span class="workspace-stats">
-            <span class="workspace-stats__label">Groups</span>
-            <span class="workspace-stats__metric">
-              <%= workspace.resource_groups_count %>
+    <% @workspaces.each do |workspace| %>
+      <div class="grid__item one-whole medium--one-quarter large--one-fifth">
+        <%= link_to workspace_path(wid: workspace.unique_id, name: workspace.name.parameterize), class: "workspace-list__item panel panel--alt panel--small-space" do %>
+          <span class="panel__head" style="background-color: #<%= workspace.metadata['background_color'] %>">
+            <%= workspace.name %>
+          </span>
+          <span class="panel__body">
+            <span class="workspace-stats">
+              <span class="workspace-stats__label">Groups</span>
+              <span class="workspace-stats__metric">
+                <%= workspace.resource_groups_count %>
+              </span>
+            </span>
+            <span class="workspace-stats">
+              <span class="workspace-stats__label">Resources</span>
+              <span class="workspace-stats__metric">
+                <%= workspace.resources_count %>
+              </span>
             </span>
           </span>
-          <span class="workspace-stats">
-            <span class="workspace-stats__label">Resources</span>
-            <span class="workspace-stats__metric">
-              <%= workspace.resources_count %>
-            </span>
-          </span>
-        </span>
-      <% end -%>
-    </div>
+        <% end -%>
+      </div>
     <% end -%>
   </div>
 </div>
 
 <% content_for :javascripts do %>
   <script id="js-workspace-template" type="text/html">
-    <div class="grid__item one-quarter">
-      <a class="workspace-list__item panel panel--alt" href="{{location}}">
+
+    <div class="grid__item one-whole medium--one-quarter large--one-fifth">
+      <a class="workspace-list__item panel panel--alt panel--small-space" href="{{location}}">
         <span class="panel__head" style="background-color: #{{background_color}}">
           {{name}}
         </span>
         <span class="panel__body">
-          {{resources_count}}
-          {{resource_groups_count}}
+          <span class="workspace-stats">
+            <span class="workspace-stats__label">Groups</span>
+            <span class="workspace-stats__metric">
+              {{resource_groups_count}}
+            </span>
+          </span>
+          <span class="workspace-stats">
+            <span class="workspace-stats__label">Resources</span>
+            <span class="workspace-stats__metric">
+              {{resources_count}}
+            </span>
+          </span>
         </span>
       </a>
     </div>
