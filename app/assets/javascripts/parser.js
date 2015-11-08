@@ -21,7 +21,8 @@ $(function(){
         return {
           name: resource.name,
           size: 1,
-          color: "#" + resource.metadata.background_color
+          color: "#" + resource.metadata.background_color,
+          allocationId: alloca.id
         }
       });
 
