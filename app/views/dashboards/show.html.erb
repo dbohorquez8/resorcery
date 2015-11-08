@@ -1,9 +1,9 @@
 <div class="container container--wide">
   <div class="grid">
     <div class="grid__item one-half">
-      <h1>Workspaces</h1>  
+      <h1>Workspaces</h1>
     </div><!--
-      
+
     --><div class="grid__item one-half text--right section__nav"><%= link_to "New Workspace", new_workspace_path, class: "button button--success" %></div>
   </div>
 
@@ -14,7 +14,8 @@
           <%= workspace.name %>
         </span>
         <span class="panel__body">
-          
+          <%= workspace.resources_count %>
+          <%= workspace.resource_groups_count %>
         </span>
       <% end -%>
     </div><% end -%>

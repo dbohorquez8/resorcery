@@ -7,5 +7,7 @@ class Resource < ActiveRecord::Base
   validates :name, uniqueness: {scope: :workspace_id}
 
   belongs_to :workspace, class_name: "Workspace", foreign_key: :workspace_id, inverse_of: :resources
+  counter_culture :workspace
+
   has_many :allocations, inverse_of: :resource
 end
